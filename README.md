@@ -1,6 +1,6 @@
 # DevOps-Group
 
-TEAM MEMBERS - Theodoros Christou, Arooj Fatima, Harriet Goodyear, May Hunt, Georgios Kleitou
+TEAM MEMBERS - Theodoros Christou, Arooj Fatima, Harriet Goodyear, Maye Hunt, Georgios Kleitou
 
 Technology
 
