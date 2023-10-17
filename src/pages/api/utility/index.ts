@@ -2,23 +2,23 @@ import { NextApiResponse } from "next";
 import dbConnect from "../../../../lib/dbConnect";
 import fs from "node:fs/promises";
 import path from "node:path";
-import Customer from "../../../../models/Customer";
+import Map from "../../../../models/Map";
 
 export default async function handler(_, res: NextApiResponse){
     try {
         
         await dbConnect();
-        const Customerfound = Customer.find({}).count();
+        const Mapfound = Map.find({}).count();
 
 
-        if(await Customerfound){
-            await Customer.deleteMany({});
-            console.log("Customer found")
+        if(await Mapfound){
+            await Map.deleteMany({});
+            console.log("Map points found")
         }
 
-        const data = await fs.readFile(path.join(__dirname, "../../../../customer.json"), "utf8");
+        const data = await fs.readFile(path.join(__dirname, "../../../../map.json"), "utf8");
         console.log(data)
-        const result = await Customer.insertMany(JSON.parse(data));
+        const result = await Map.insertMany(JSON.parse(data));
         res.status(201).json({success: true, result: result})
         
     } catch (e) {

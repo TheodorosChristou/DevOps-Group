@@ -3,9 +3,9 @@ export default function Heading(){
     return(
         <div>
         <Head>
-            <title>EuroTech Tasker</title>
+            <title>Mongeese Map</title>
             <meta name="description" content="Home" />
-            <link rel="icon" href="/img/iq.ico" />
+            <link rel="icon" href="/img/mongoose.ico" />
         </Head>
       </div>
 
