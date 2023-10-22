@@ -4,7 +4,7 @@ import "leaflet/dist/leaflet.css"
 //Basic Map using leaflet react for now
 export default function DynamicMap (){
     return (
-    <div>     
+    <div className="flex justify-center items-start h-screen z-50">     
         <MapContainer style={{ width: '500px', height: '500px' }} center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
             <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
