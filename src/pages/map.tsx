@@ -9,6 +9,7 @@ const DynamicMap = dynamic(() => import("../components/DynamicMap"), {
   ssr: false, 
 });
 
+
 export default function Dmap() {
   return <DynamicMap/>;
 }
