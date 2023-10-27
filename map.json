@@ -1,10 +1,15 @@
 [
     {
-        "Lat": "51.5072",
-        "Lon": "0.1276"
+        "Lat": 51.5072,
+        "Lon": 0.1276,
+        "City": "London",
+        "Description": "Beautiful London Situated in the heart of England"
+
     },
     {
-        "Lat": "32.5072",
-        "Lon": "12.1276"
+        "Lat": 32.5072,
+        "Lon": 12.1276,
+        "City": "Random",
+        "Description": "Random Place"
     }
 ]
