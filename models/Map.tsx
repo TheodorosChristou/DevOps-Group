@@ -6,6 +6,7 @@ export interface MapInterface{
     Lon: number;
     City: string;
     Description: string;
+    Photo: string;
 
 }
 
@@ -14,6 +15,7 @@ const MapSchema = new Schema<MapInterface, Model<MapInterface>>({
     Lon: {type: Number},
     City: {type: String},
     Description: {type: String},
+    Photo: {type: String},
 
 
 })
