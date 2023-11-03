@@ -1,0 +1,17 @@
+[
+    {
+        "Lat": 51.5072,
+        "Lon": 0.1276,
+        "City": "London",
+        "Description": "Beautiful London Situated in the heart of England",
+        "Photo": "Incorrect Link"
+
+    },
+    {
+        "Lat": 32.5072,
+        "Lon": 12.1276,
+        "City": "Random",
+        "Description": "Random Place",
+        "Photo": "Incorrect Link"
+    }
+]
