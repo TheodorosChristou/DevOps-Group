@@ -37,4 +37,4 @@ How to set up:
 - Remove the .example from the file .env.local.example
 - Install the dependencies with `npm install` in the terminal
 - Run the code with `npm run dev`
-- Open http://localhost:3000
+- Open http://localhost:8080
