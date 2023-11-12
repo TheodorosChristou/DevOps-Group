@@ -1,10 +1,5 @@
 import React from 'react';
-import { GetServerSideProps } from 'next';
-import dbConnect from '../../lib/dbConnect';
-import MapModel, { MapInterface } from '../../models/Map'; // Import MapModel and MapInterface
-import dynamic from 'next/dynamic';
 import AddLocationForm, {FormValues} from "../components/AddLocationForm"
-import {useState} from "react";
 import axios from "axios";
 import {useMutation} from "react-query";
 
