@@ -4,9 +4,14 @@ import L, { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import markIcon from '../../public/img/mark.ico';
 import userIcon from '../../public/img/user.ico';
+import { AdvancedImage } from '@cloudinary/react';
+import useCloudinary from "@/hooks/useCloudinary";
+import { thumbnail } from '@cloudinary/url-gen/actions/resize';
 
 export default function DynamicMap({ mapData }) {
   const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
+
+  const {Cloudinary} = useCloudinary();
 
   // Custom Icon for other markers
   const customIcon = new L.Icon({
@@ -76,9 +81,17 @@ export default function DynamicMap({ mapData }) {
           {/* Rendering a marker for each datapoint in the mapData array */}
           {mapData.map((dataPoint) => (
             <Marker position={[dataPoint.Lat, dataPoint.Lon]} icon={customIcon} key={dataPoint._id}>
+            {(dataPoint.Photos && (
+              <Popup>
+                <div>{dataPoint.City} - {dataPoint.Description}</div>
+                <div className="mt-2 flex justify-center"><AdvancedImage className="border-2 border-black mr-1" cldImg={Cloudinary.image(dataPoint.Photos[0]).resize(thumbnail().width(200).height(200))}/></div>
+              </Popup>
+            ))}
+            {(!dataPoint.Photos && (
               <Popup>
                 {dataPoint.City} - {dataPoint.Description}
               </Popup>
+            ))}
             </Marker>
           ))}
           {/* Rendering a marker for the user with the new user icon */}
