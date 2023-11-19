@@ -1,12 +1,8 @@
 import React from 'react';
-import { GetServerSideProps } from 'next';
-import dbConnect from '../../lib/dbConnect';
-import MapModel, { MapInterface } from '../../models/Map'; // Import MapModel and MapInterface
-import dynamic from 'next/dynamic';
 import AddLocationForm, {FormValues} from "../components/AddLocationForm"
-import {useState} from "react";
 import axios from "axios";
 import {useMutation} from "react-query";
+import {v2 as cloudinary} from 'cloudinary';
 
 
   export default function Upload() {
@@ -16,6 +12,7 @@ import {useMutation} from "react-query";
 
   
     const {isLoading, isSuccess, isError, mutate} = useMutation( async(locationform: FormValues) =>{
+      console.log(locationform)
           console.log("creating new marker")
           await axios.post("/api/upload/", locationform);
           redirect("/map");
