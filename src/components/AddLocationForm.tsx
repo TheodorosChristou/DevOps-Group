@@ -1,7 +1,11 @@
 import {useEffect} from "react";
+import {CloudUploadIcon, TrashIcon} from "@heroicons/react/outline";
 import {SubmitHandler, useForm} from "react-hook-form";
 import FieldValidation from "./FieldValidation";
-
+import {thumbnail} from "@cloudinary/url-gen/actions/resize"
+import { AdvancedImage } from "@cloudinary/react";
+import useCloudinary from "@/hooks/useCloudinary";
+import { useState } from "react";
 
 export interface WorksheetFormProps {
   onSubmit: SubmitHandler<FormValues>;
@@ -17,7 +21,7 @@ export interface FormValues {
     Lon: number;
     City: string;
     Description: string;
-
+    Photos: [];
   }
 
 
@@ -26,14 +30,59 @@ export default function AddLocationForm(props){
 
     var valid = true
 
+
+    const {Cloudinary} = useCloudinary();
+
+
+
+    const handleUpload = () => {
+      if (
+        !process.env.NEXT_PUBLIC_CLOUDINARY_NAME ||
+        !process.env.NEXT_PUBLIC_CLOUDINARY_PRESET
+      ) {
+        console.error(`in order for image uploading to work 
+        you need to set the following environment variables: 
+        NEXT_PUBLIC_CLOUDINARY_NAME  and NEXT_PUBLIC_CLOUDINARY_PRESET`);
+      }
+  
+      // eslint-disable-next-line
+      // @ts-ignore
+      const imageWidget = cloudinary.createUploadWidget(
+
+        {
+          cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_NAME,
+          uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_PRESET,
+          sources: ["local", "camera"],
+        },
+        (error, result) => {
+          if (error) {
+            console.error(error);
+          }
+          if(result.event === "success"){
+            console.log("Image uploaded, result information:", result.info)
+            setIcon(result.info.public_id)
+          }
+        }
+      );
+  
+      imageWidget.open();
+    };
+  
+
     const {onSubmit, isLoading, triggerReset, values, label} = props;
     const {register, control,  handleSubmit, formState:{errors, dirtyFields, touchedFields, isDirty}, reset} = useForm<FormValues>({
         defaultValues: {...values},
       });
 
       useEffect(() => {
-        triggerReset && reset();
+        if (triggerReset) {
+          setIcon("");
+          reset();
+        }
       }, [triggerReset, reset]);
+
+
+      const [icon, setIcon] = useState(values?.Photos ? values?.Photos[0] : "");
 
       
       
@@ -45,7 +94,7 @@ export default function AddLocationForm(props){
         </div>
         <form
         onSubmit={handleSubmit((data)=>{
-            onSubmit({...data})
+            onSubmit({...data, ...{Photos: [icon]}})
         })}>
 
 <div>
@@ -88,12 +137,24 @@ export default function AddLocationForm(props){
             />
             <p>{errors.Description?.message}</p>
             </div>
+            <div className="pt-5 flex justify-center">
+            <a className="gray-outline-button" onClick={(handleUpload)}><CloudUploadIcon className="h-5 w-5"/>Upload Photo</a>
+            </div>
+            {(icon && (
+              <>
+            <div className="pt-5 flex justify-center">
+              <TrashIcon className="w-5 h-5 cursor-pointer" onClick={() => setIcon("")}/>
+              <AdvancedImage className="border-2 border-black mr-1" cldImg={Cloudinary.image(icon).resize(thumbnail().width(200).height(200))}/> 
+            </div>
+            </>
+            ))}
             <div className=" flex justify-center">
                 <div className="flex justify-center mt-5 bg-black text-white rounded-full max-w-[50%]">
                 <button className="bg-black text-white bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">Submit</button>
                 </div>
             </div>
         </form>
+
         </div>
 </div>
     );
