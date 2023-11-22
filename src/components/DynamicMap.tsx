@@ -7,6 +7,7 @@ import userIcon from '../../public/img/user.ico';
 
 export default function DynamicMap({ mapData }) {
   const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
+  const [isDefaultLocation, setIsDefaultLocation] = useState<boolean>(false);
 
   // Custom Icon for other markers
   const customIcon = new L.Icon({
@@ -38,13 +39,16 @@ export default function DynamicMap({ mapData }) {
           } catch (error: any) { // Explicitly type error
             console.error('Error getting user location:', error.message);
             setUserLocation([51.5072, 0.1276]); // Use default coordinates if there is an error
+            setIsDefaultLocation(true);
           }
         } else {
           setUserLocation([51.5072, 0.1276]); // Use default coordinates if permission is denied
+          setIsDefaultLocation(true);
         }
       } else {
         console.error('Geolocation is not supported by your browser');
         setUserLocation([51.5072, 0.1276]); // Use default coordinates if geolocation is not supported
+        setIsDefaultLocation(true);
       }
     };
 
@@ -81,13 +85,15 @@ export default function DynamicMap({ mapData }) {
               </Popup>
             </Marker>
           ))}
-          {/* Rendering a marker for the user with the new user icon */}
-          {userLocation !== null && (
+          {/* Rendering a marker for the user with the new user icon only when permission is granted and not at the hardcoded coordinates */}
+          {userLocation !== null && !isDefaultLocation && (
             <Marker position={userLocation} icon={newUserIcon}>
               {/* Popup for enabling location access */}
-              <Popup>
+              <Popup className="bg-black text-white p-4 rounded-md">
                 <div>
-                  <p>Tracking your location</p>
+                  <h3>
+                    Latitude: {userLocation[0].toFixed(6)}, Longitude: {userLocation[1].toFixed(6)}
+                  </h3>
                 </div>
               </Popup>
             </Marker>
