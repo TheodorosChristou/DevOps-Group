@@ -2,7 +2,8 @@ import { GetServerSideProps } from "next";
 import dbConnect from "../../lib/dbConnect";
 import Map from "../../models/Map";
 import {useSession} from "next-auth/react"
-
+import "../i18n";
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -10,6 +11,7 @@ import {useSession} from "next-auth/react"
 
 export default function Home(Map){
 
+    const {t,i18n} = useTranslation();
     const map = Map
     const search = map.Map
     const{data: session} = useSession();
@@ -22,7 +24,7 @@ export default function Home(Map){
     if(session){
         return(
             <div className="mt-10 mb-10">
-                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1}>Here is the Latitude and Longitude from the database</h1>
+                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1}>{t('index.msg')}</h1>
                 {search.map((r,i) =>(
                 <div className="bg-black " key={i+1}>
                 <div className=""key={i+2}>
@@ -38,8 +40,8 @@ export default function Home(Map){
                                     </thead>
                                     <tbody key={i+11}>
                                         <tr className="font-semibold" key={i+12}>
-                                            <td key={i+13} className="pr-10">Latitude: {r.Lat}</td>
-                                            <td key={i+14} className="pr-10">Longitude: {r.Lon}</td>
+                                            <td key={i+13} className="pr-10">{t('index.lat')}: {r.Lat}</td>
+                                            <td key={i+14} className="pr-10">{t('index.lon')}: {r.Lon}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -53,7 +55,7 @@ export default function Home(Map){
     }else{
         return(
             <div className="flex justify-center mt-10">
-            <h1 className="text-white">Please Log in using the Header</h1>
+            <h1 className="text-white">{t('index.please')}</h1>
         </div>
         )
 

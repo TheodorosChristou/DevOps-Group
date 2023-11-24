@@ -7,8 +7,14 @@ import userIcon from '../../public/img/user.ico';
 import { AdvancedImage } from '@cloudinary/react';
 import useCloudinary from "@/hooks/useCloudinary";
 import { thumbnail } from '@cloudinary/url-gen/actions/resize';
+import "../i18n";
+import { useTranslation } from 'react-i18next';
+
 
 export default function DynamicMap({ mapData }) {
+
+  const {t,i18n} = useTranslation();
+
   const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
 
   const {Cloudinary} = useCloudinary();
@@ -30,31 +36,32 @@ export default function DynamicMap({ mapData }) {
       // Check if geolocation is supported
       if ('geolocation' in navigator) {
         // Ask for permission
-        const permissionGranted = window.confirm('Do you want to enable location services?');
-        
+        const permissionGranted = window.confirm(t("dynamicmap.prompt"));
+  
         if (permissionGranted) {
           try {
             const position = await new Promise<GeolocationPosition>((resolve, reject) => {
               navigator.geolocation.getCurrentPosition(resolve, reject);
             });
-
+  
             const { latitude, longitude } = position.coords;
             setUserLocation([latitude, longitude]);
-          } catch (error: any) { // Explicitly type error
-            console.error('Error getting user location:', error.message);
-            setUserLocation([51.5072, 0.1276]); // Use default coordinates if there is an error
+          } catch (error: any) {
+            console.error(t("dynamicmap.erroruserlocation") + ' ' + error.message);
+            setUserLocation([51.5072, 0.1276]);
           }
         } else {
-          setUserLocation([51.5072, 0.1276]); // Use default coordinates if permission is denied
+          setUserLocation([51.5072, 0.1276]);
         }
       } else {
-        console.error('Geolocation is not supported by your browser');
-        setUserLocation([51.5072, 0.1276]); // Use default coordinates if geolocation is not supported
+        console.error(t("dynamicmap.nosupport"));
+        setUserLocation([51.5072, 0.1276]);
       }
     };
-
+  
     handlePermission();
-  }, []);
+  }, [t]);
+  
 
   const SetViewOnMap = () => {
     const map = useMap();

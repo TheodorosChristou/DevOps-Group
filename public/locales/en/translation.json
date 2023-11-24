@@ -1,10 +1,36 @@
 {
-        "map": "Map",
-        "welcome": "Welcome",
-        "home": "Home",
-        "upload": "Upload",
-        "login": "Login",
-        "logout": "Logout"
-    
+        "index":{
+
+                "msg":"Here is the Latitude and Longitude from the database",
+                "lat":"Latitude",
+                "lon":"Longitude",
+                "please":"Please Log in using the Header"
+
+        }, 
+        
+        "heading":{
+                "heading":"Mongeese Map"
+        },
+
+        "validation":{
+                "validator":"Field is Required"
+        },
+
+        "dynamicmap":{
+                "prompt":"Do you want to enable location services?",
+                "erroruserlocation":"Error getting user location:",
+                "nosupport":"Geolocation is not supported by your browser"
+
+        },
+        
+        "header":{
+
+                "map": "Map",
+                "welcome": "Welcome",
+                "home": "Home",
+                "upload": "Upload",
+                "login": "Login",
+                "logout": "Logout"
+        }
 
 }
