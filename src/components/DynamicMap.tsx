@@ -1,84 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
-import L, { LatLngTuple } from 'leaflet';
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+
+// Import the icon image
 import markIcon from '../../public/img/mark.ico';
-import userIcon from '../../public/img/user.ico';
-import { AdvancedImage } from '@cloudinary/react';
-import useCloudinary from "@/hooks/useCloudinary";
-import { thumbnail } from '@cloudinary/url-gen/actions/resize';
 
+// Takes an array of markers to display on the map
 export default function DynamicMap({ mapData }) {
-  const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
-
-  const {Cloudinary} = useCloudinary();
-
-  // Custom Icon for other markers
+  // Custom Icon, (work around the default one which is currently broken)
   const customIcon = new L.Icon({
     iconUrl: markIcon.src,
     iconSize: [78, 64],
   });
 
-  // Custom Icon for the user's marker
-  const newUserIcon = new L.Icon({
-    iconUrl: userIcon.src,
-    iconSize: [32, 32],
-  });
-
-  useEffect(() => {
-    const handlePermission = async () => {
-      // Check if geolocation is supported
-      if ('geolocation' in navigator) {
-        // Ask for permission
-        const permissionGranted = window.confirm('Do you want to enable location services?');
-        
-        if (permissionGranted) {
-          try {
-            const position = await new Promise<GeolocationPosition>((resolve, reject) => {
-              navigator.geolocation.getCurrentPosition(resolve, reject);
-            });
-
-            const { latitude, longitude } = position.coords;
-            setUserLocation([latitude, longitude]);
-          } catch (error: any) { // Explicitly type error
-            console.error('Error getting user location:', error.message);
-            setUserLocation([51.5072, 0.1276]); // Use default coordinates if there is an error
-          }
-        } else {
-          setUserLocation([51.5072, 0.1276]); // Use default coordinates if permission is denied
-        }
-      } else {
-        console.error('Geolocation is not supported by your browser');
-        setUserLocation([51.5072, 0.1276]); // Use default coordinates if geolocation is not supported
-      }
-    };
-
-    handlePermission();
-  }, []);
-
-  const SetViewOnMap = () => {
-    const map = useMap();
-    if (userLocation) {
-      map.setView(userLocation, 16);
-    }
-    return null;
-  };
-
   return (
     <div className="fixed inset-0 flex items-center justify-center">
-      <div className="w-screen h-screen">
+      <div className="w-full h-full">
         {/* Map Rendering */}
-        <MapContainer
-          style={{ width: '100%', height: '100%' }}
-          center={userLocation || [51.5072, 0.1276]}
-          zoom={16}
-          scrollWheelZoom={true}
-        >
+        <MapContainer style={{ width: '100%', height: '100%' }} center={[32.5072, 12.1276]} zoom={10} scrollWheelZoom={true}>
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {/* Rendering a marker for each datapoint in the mapData array */}
+          {/* We assign a unique key to each datapoint using their _id */}
           {mapData.map((dataPoint) => (
             <Marker position={[dataPoint.Lat, dataPoint.Lon]} icon={customIcon} key={dataPoint._id}>
             {((dataPoint.Photos?.[0] != null) && (
@@ -91,21 +37,8 @@ export default function DynamicMap({ mapData }) {
               <Popup>
                 {dataPoint.City} - {dataPoint.Description}
               </Popup>
-            ))}
             </Marker>
           ))}
-          {/* Rendering a marker for the user with the new user icon */}
-          {userLocation !== null && (
-            <Marker position={userLocation} icon={newUserIcon}>
-              {/* Popup for enabling location access */}
-              <Popup>
-                <div>
-                  <p>Tracking your location</p>
-                </div>
-              </Popup>
-            </Marker>
-          )}
-          <SetViewOnMap />
         </MapContainer>
       </div>
     </div>

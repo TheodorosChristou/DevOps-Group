@@ -1,11 +1,6 @@
-import {useEffect} from "react";
-import {CloudUploadIcon, TrashIcon} from "@heroicons/react/outline";
-import {SubmitHandler, useForm} from "react-hook-form";
+import { useEffect } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import FieldValidation from "./FieldValidation";
-import {thumbnail} from "@cloudinary/url-gen/actions/resize"
-import { AdvancedImage } from "@cloudinary/react";
-import useCloudinary from "@/hooks/useCloudinary";
-import { useState } from "react";
 
 export interface WorksheetFormProps {
   onSubmit: SubmitHandler<FormValues>;
@@ -84,83 +79,84 @@ export default function AddLocationForm(props){
 
       const [icon, setIcon] = useState(values?.Photos ? values?.Photos[0] : null);
 
-      
-      
-    return(
-    <div  className="flex justify-center">
-    <div className="flex flex-col space-y-3 bg-gray-600	 p-7 rounded-lg">
-        <h3 className="text-lg text-center mb-2 font-bold underline underline-offset-4"> Upload your Location!</h3>
-        <div>
-        </div>
-        <form
-        onSubmit={handleSubmit((data)=>{
-            onSubmit({...data, ...{Photos: [icon]}})
-        })}>
 
-<div>
+export default function AddLocationForm(props) {
+  var valid = true;
+
+  const { onSubmit, isLoading, triggerReset, values, label } = props;
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState: { errors, dirtyFields, touchedFields, isDirty },
+    reset,
+  } = useForm<FormValues>({
+    defaultValues: { ...values },
+  });
+
+  useEffect(() => {
+    triggerReset && reset();
+  }, [triggerReset, reset]);
+
+  return (
+    <div className="flex justify-center">
+      <div className="flex flex-col space-y-3 bg-gray-600 p-7 rounded-lg w-full max-w-lg">
+        <h3 className="text-lg text-center mb-2 font-bold underline underline-offset-4">
+          {" "}
+          Upload your Location!
+        </h3>
+        <form
+          onSubmit={handleSubmit((data) => {
+            onSubmit({ ...data });
+          })}
+        >
+          <div>
             <label className="font-semibold"> Lat </label>
             <input
-            {...register("Lat", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
-            type="float"
-            placeholder="Lat"
+              {...register("Lat", FieldValidation(valid))}
+              className="border-2 rounded-md p-2 ml-2 text-black w-full"
+              type="float"
+              placeholder="Lat"
             />
             <p>{errors.Lat?.message}</p>
-            </div>
-            <div>
+          </div>
+          <div>
             <label className="font-semibold"> Lon </label>
             <input
-            {...register("Lon", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
-            type="float"
-            placeholder="Lon"
+              {...register("Lon", FieldValidation(valid))}
+              className="border-2 rounded-md p-2 ml-2 text-black w-full"
+              type="float"
+              placeholder="Lon"
             />
             <p>{errors.Lon?.message}</p>
-            </div>
-            <div>
+          </div>
+          <div>
             <label className="font-semibold"> City </label>
             <input
-            {...register("City", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
-            type="string"
-            placeholder="City"
+              {...register("City", FieldValidation(valid))}
+              className="border-2 rounded-md p-2 ml-2 text-black w-full"
+              type="text"
+              placeholder="City"
             />
             <p>{errors.City?.message}</p>
-            </div>
-            <div>
+          </div>
+          <div>
             <label className="font-semibold"> Description </label>
             <input
-            {...register("Description", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
-            type="string"
-            placeholder="Description"
+              {...register("Description", FieldValidation(valid))}
+              className="border-2 rounded-md p-2 ml-2 text-black w-full"
+              type="text"
+              placeholder="Description"
             />
             <p>{errors.Description?.message}</p>
-            </div>
-            <div className="pt-5 flex justify-center">
-            <a className="gray-outline-button" onClick={(handleUpload)}><CloudUploadIcon className="h-5 w-5"/>Upload Photo</a>
-            </div>
-            {(icon && (
-              <>
-            <div className="pt-5 flex justify-center">
-              <TrashIcon className="w-5 h-5 cursor-pointer" onClick={() => setIcon("")}/>
-              <AdvancedImage className="border-2 border-black mr-1" cldImg={Cloudinary.image(icon).resize(thumbnail().width(200).height(200))}/> 
-            </div>
-            </>
-            ))}
-            <div className=" flex justify-center">
-                <div className="flex justify-center mt-5 bg-black text-white rounded-full max-w-[50%]">
-                <button className="bg-black text-white bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">Submit</button>
-                </div>
-            </div>
+          </div>
+          <div className="flex justify-center mt-5">
+            <button className="bg-black text-white rounded-full py-1 px-3 font-semibold">
+              Submit
+            </button>
+          </div>
         </form>
-
-        </div>
-</div>
-    );
+      </div>
+    </div>
+  );
 }
-
-
-
-
-
