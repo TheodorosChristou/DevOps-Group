@@ -26,7 +26,7 @@ export default function DynamicMap({ mapData }) {
       // Check if geolocation is supported
       if ('geolocation' in navigator) {
         // Ask for permission
-        const permissionGranted = window.confirm('Do you want to enable location services?');
+        const permissionGranted = window.confirm('Do you want to enable location services');
         
         if (permissionGranted) {
           try {
