@@ -27,6 +27,13 @@ export default function DynamicMap({ mapData }) {
           {/* We assign a unique key to each datapoint using their _id */}
           {mapData.map((dataPoint) => (
             <Marker position={[dataPoint.Lat, dataPoint.Lon]} icon={customIcon} key={dataPoint._id}>
+            {((dataPoint.Photos?.[0] != null) && (
+              <Popup>
+                <div>{dataPoint.City} - {dataPoint.Description}</div>
+                <div className="mt-2 flex justify-center"><AdvancedImage className="border-2 border-black mr-1" cldImg={Cloudinary.image(dataPoint.Photos[0]).resize(thumbnail().width(200).height(200))}/></div>
+              </Popup>
+            ))}
+            {((dataPoint.Photos?.[0] == null) && (
               <Popup>
                 {dataPoint.City} - {dataPoint.Description}
               </Popup>

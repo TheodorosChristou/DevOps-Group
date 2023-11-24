@@ -11,12 +11,74 @@ export interface WorksheetFormProps {
 }
 
 export interface FormValues {
-  _id?: string;
-  Lat: number;
-  Lon: number;
-  City: string;
-  Description: string;
-}
+    _id?: string;
+    Lat: number;
+    Lon: number;
+    City: string;
+    Description: string;
+    Photos: [];
+  }
+
+
+export default function AddLocationForm(props){
+
+
+    var valid = true
+
+
+    const {Cloudinary} = useCloudinary();
+
+
+
+    const handleUpload = () => {
+      if (
+        !process.env.NEXT_PUBLIC_CLOUDINARY_NAME ||
+        !process.env.NEXT_PUBLIC_CLOUDINARY_PRESET
+      ) {
+        console.error(`in order for image uploading to work 
+        you need to set the following environment variables: 
+        NEXT_PUBLIC_CLOUDINARY_NAME  and NEXT_PUBLIC_CLOUDINARY_PRESET`);
+      }
+  
+      // eslint-disable-next-line
+      // @ts-ignore
+      const imageWidget = cloudinary.createUploadWidget(
+
+        {
+          cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_NAME,
+          uploadPreset: process.env.NEXT_PUBLIC_CLOUDINARY_PRESET,
+          sources: ["local", "camera"],
+        },
+        (error, result) => {
+          if (error) {
+            console.error(error);
+          }
+          if(result.event === "success"){
+            console.log("Image uploaded, result information:", result.info)
+            setIcon(result.info.public_id)
+          }
+        }
+      );
+  
+      imageWidget.open();
+    };
+  
+
+    const {onSubmit, isLoading, triggerReset, values, label} = props;
+    const {register, control,  handleSubmit, formState:{errors, dirtyFields, touchedFields, isDirty}, reset} = useForm<FormValues>({
+        defaultValues: {...values},
+      });
+
+      useEffect(() => {
+        if (triggerReset) {
+          setIcon("");
+          reset();
+        }
+      }, [triggerReset, reset]);
+
+
+      const [icon, setIcon] = useState(values?.Photos ? values?.Photos[0] : null);
+
 
 export default function AddLocationForm(props) {
   var valid = true;
