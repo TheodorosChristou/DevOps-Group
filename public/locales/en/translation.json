@@ -23,6 +23,14 @@
 
         },
         
+        "AddLocationForm":{
+                "upload":"Upload your location",
+                "city":"City",
+                "description": "Description",
+                "uploadphoto": "Upload Photo",
+                "sumbit": "Submit"
+        },
+
         "header":{
 
                 "map": "Map",
@@ -31,6 +39,13 @@
                 "upload": "Upload",
                 "login": "Login",
                 "logout": "Logout"
+        },
+
+        "page404":{
+
+                "pnf":"Page not found",
+                "bthp":"Back To Home Page"
+
         }
 
 }
