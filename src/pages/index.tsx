@@ -52,7 +52,7 @@ export default function Home(Map){
                         </div>
                     </div>
             </div>
-                ))}
+          </div>
         </div>
         );
     }else{
@@ -75,13 +75,14 @@ export default function Home(Map){
     }
 
 
+      ))}
+    </div>
+  );
 }
 
-
-export const getServerSideProps : GetServerSideProps = async () => {
-    
-    await dbConnect();
-    const results = await Map.find({}).lean();
-    const map = results.map(doc => ({...doc, ...{_id:doc._id.toString()}}))
-    return {props: {Map: map}}
+export const getServerSideProps: GetServerSideProps = async () => {
+  await dbConnect();
+  const results = await Map.find({}).lean();
+  const map = results.map((doc) => ({ ...doc, ...{ _id: doc._id.toString() } }));
+  return { props: { Map: map } };
 };

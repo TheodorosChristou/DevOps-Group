@@ -1,3 +1,4 @@
+
 import NextAuth, { Session } from "next-auth"
 import {MongoDBAdapter} from "@next-auth/mongodb-adapter";
 import GithubProvider, {GithubProfile} from "next-auth/providers/github"
@@ -6,6 +7,14 @@ import EmailProvider from "next-auth/providers/email"
 import clientPromise from "../../../../lib/mongodb"
 import { AdapterUser } from "next-auth/adapters";
 export const authOptions = {
+import NextAuth from "next-auth"
+import {MongoDBAdapter} from "@next-auth/mongodb-adapter";
+import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google"
+import EmailProvider from "next-auth/providers/email"
+import clientPromise from "../../../../lib/mongodb"
+export const authOptions = {
+    // Configure one or more authentication providers
   secret: process.env.NEXTAUTH_SECRET,
   adapter: MongoDBAdapter(clientPromise),
   providers: [
@@ -34,6 +43,12 @@ export const authOptions = {
           role: "user",
         };
       },
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }),
 
   ],
