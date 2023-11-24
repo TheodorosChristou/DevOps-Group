@@ -14,8 +14,7 @@ export default async function handler(req,res){
                 const map = await Map.create(req.body);
                 res.status(201).json({success: true, data: map})
             }catch(error) {
-                res.status(400).json({success: true, data: error})
-
+                res.status(400).json({success: false, data: error})
             }
             break;
 

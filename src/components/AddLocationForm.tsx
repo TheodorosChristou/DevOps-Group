@@ -82,7 +82,7 @@ export default function AddLocationForm(props){
       }, [triggerReset, reset]);
 
 
-      const [icon, setIcon] = useState(values?.Photos ? values?.Photos[0] : "");
+      const [icon, setIcon] = useState(values?.Photos ? values?.Photos[0] : null);
 
       
       
