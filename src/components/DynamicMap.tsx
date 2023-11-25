@@ -7,10 +7,14 @@ import userIcon from '../../public/img/user.ico';
 import { AdvancedImage } from '@cloudinary/react';
 import useCloudinary from "@/hooks/useCloudinary";
 import { thumbnail } from '@cloudinary/url-gen/actions/resize';
+import { useTranslation } from 'react-i18next';
+
 
 export default function DynamicMap({ mapData }) {
   const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
   const [isDefaultLocation, setIsDefaultLocation] = useState<boolean>(false);
+
+  const {t} = useTranslation();
 
   const {Cloudinary} = useCloudinary();
 
@@ -31,7 +35,7 @@ export default function DynamicMap({ mapData }) {
       // Check if geolocation is supported
       if ('geolocation' in navigator) {
         // Ask for permission
-        const permissionGranted = window.confirm('Do you want to enable location services');
+        const permissionGranted = window.confirm(t("dynamicmap.prompt"));
         
         if (permissionGranted) {
           try {
@@ -42,7 +46,7 @@ export default function DynamicMap({ mapData }) {
             const { latitude, longitude } = position.coords;
             setUserLocation([latitude, longitude]);
           } catch (error: any) { // Explicitly type error
-            console.error('Error getting user location:', error.message);
+            console.error(t("dynamicmap.erroruserlocation") + ' ' + error.message);
             setUserLocation([51.5072, 0.1276]); // Use default coordinates if there is an error
             setIsDefaultLocation(true);
           }
@@ -51,7 +55,7 @@ export default function DynamicMap({ mapData }) {
           setIsDefaultLocation(true);
         }
       } else {
-        console.error('Geolocation is not supported by your browser');
+        console.error(t("dynamicmap.nosupport"));
         setUserLocation([51.5072, 0.1276]); // Use default coordinates if geolocation is not supported
         setIsDefaultLocation(true);
       }
@@ -106,7 +110,7 @@ export default function DynamicMap({ mapData }) {
               <Popup className="bg-black text-white p-4 rounded-md">
                 <div>
                   <h3>
-                    Latitude: {userLocation[0].toFixed(6)}, Longitude: {userLocation[1].toFixed(6)}
+                    {t("index.lat")}: {userLocation[0].toFixed(6)}, {t("index.lon")}: {userLocation[1].toFixed(6)}
                   </h3>
                 </div>
               </Popup>

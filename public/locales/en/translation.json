@@ -1,0 +1,53 @@
+{
+    "index":{
+
+            "msg":"Here is the Latitude and Longitude from the database",
+            "lat":"Latitude",
+            "lon":"Longitude",
+            "please":"Please Log in using the Header"
+
+    }, 
+    
+    "heading":{
+            "heading":"Mongeese Map"
+    },
+
+    "validation":{
+            "validator":"Field is Required",
+            "numbervalidator":"Field only accepts numbers!"
+    },
+
+    "dynamicmap":{
+            "prompt":"Do you want to enable location services?",
+            "erroruserlocation":"Error getting user location:",
+            "nosupport":"Geolocation is not supported by your browser"
+
+    },
+    
+    "AddLocationForm":{
+            "upload":"Upload your location",
+            "city":"City",
+            "description": "Description",
+            "uploadphoto": "Upload Photo",
+            "submit": "Submit"
+    },
+
+    "header":{
+
+            "map": "Map",
+            "welcome": "Welcome",
+            "home": "Home",
+            "upload": "Upload",
+            "login": "Login",
+            "logout": "Logout"
+    },
+
+    "page404":{
+
+            "pnf":"Page not found",
+            "bthp":"Back To Home Page"
+
+    }
+    
+
+}
