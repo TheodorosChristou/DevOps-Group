@@ -1,7 +1,6 @@
 // _app.tsx
 import { AppProps } from 'next/app';
 import Heading from "@/components/Heading";
-import Header from "../components/Header";
 import { I18nextProvider } from 'react-i18next';
 import i18n from '../i18n'; // Adjust the path accordingly
 import '../styles/globals.css';
@@ -9,11 +8,13 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { SessionProvider } from 'next-auth/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import Script from 'next/script';
+import dynamic from 'next/dynamic';
 
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const cld = new Cloudinary({ cloud: { cloudName: 'dmmj64ogm' } });
+  const Header = dynamic(() => import('../components/Header'), { ssr:false} )
 
   return (
     <SessionProvider session={session}>
