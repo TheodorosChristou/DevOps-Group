@@ -1,22 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
-import Heading from "../components/Heading";
-import "../i18n";
-import { useTranslation } from 'react-i18next';
+import dynamic from "next/dynamic";
 
 export default function notFound() {
-  const {t,i18n} = useTranslation();
-  return (
-    
-    <div className="flex items-center flex-col">
-          <Heading></Heading>
-      <div className="">
-        <Image src="/img/404.png" width={727} height={500} alt="404 image" />
-      </div>
-      <h1 className="text-3xl mb-5">{t("page404.pnf")}</h1>
-      <Link href="/">
-        <h1 className="blue-button w-48 mb-11">{t("page404.bthp")}</h1>
-      </Link>
-    </div>
-  );
+  const Error404 = dynamic(() => import('../components/Error'), { ssr:false} )
+
+  return(<Error404/>)
 }

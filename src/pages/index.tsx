@@ -2,7 +2,6 @@ import { GetServerSideProps } from "next";
 import dbConnect from "../../lib/dbConnect";
 import Map from "../../models/Map";
 import {useSession} from "next-auth/react"
-import "../i18n";
 import dynamic from "next/dynamic";
 
 

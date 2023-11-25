@@ -2,7 +2,6 @@ import NextAuth, { Session } from "next-auth"
 import {MongoDBAdapter} from "@next-auth/mongodb-adapter";
 import GithubProvider, {GithubProfile} from "next-auth/providers/github"
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google"
-import EmailProvider from "next-auth/providers/email"
 import clientPromise from "../../../../lib/mongodb"
 import { AdapterUser } from "next-auth/adapters";
 export const authOptions = {

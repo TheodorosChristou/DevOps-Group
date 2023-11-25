@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Uploading(){
 
-
+    const {t} = useTranslation();
 
     const redirect = (url, asLink = true) =>
     asLink ? (window.location.href = url) : window.location.replace(url);
@@ -42,6 +42,6 @@ export default function Uploading(){
       isLoading={isLoading}
     triggerReset={isSuccess}
     onSubmit={(locationform) => mutate(locationform)}
-    />  </div> <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white"></h1>)}</div></div>;
+    />  </div> <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white">{t("uploading.sorry")}</h1>)}</div></div>;
 
 }
