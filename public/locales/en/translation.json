@@ -28,7 +28,7 @@
                 "city":"City",
                 "description": "Description",
                 "uploadphoto": "Upload Photo",
-                "sumbit": "Submit"
+                "submit": "Submit"
         },
 
         "header":{
