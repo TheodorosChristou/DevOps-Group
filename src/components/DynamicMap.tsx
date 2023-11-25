@@ -107,7 +107,7 @@ export default function DynamicMap({ mapData }) {
            {userLocation !== null && !isDefaultLocation && (
             <Marker position={userLocation} icon={newUserIcon}>
               {/* Popup for enabling location access */}
-              <Popup className="bg-black text-white p-4 rounded-md">
+              <Popup className="text-white p-4 rounded-md">
                 <div>
                   <h3>
                     {t("index.lat")}: {userLocation[0].toFixed(6)}, {t("index.lon")}: {userLocation[1].toFixed(6)}
