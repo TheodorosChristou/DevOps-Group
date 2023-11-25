@@ -7,11 +7,11 @@ const locales = {
 };
 
 const LanguageSelector: React.FC = () => {
-  const { i18n } = useTranslation();
+  const {t, i18n } = useTranslation();
 
   return (
     <div className="flex space-x-2 items-center">
-      <span className="font-bold text-black">Languages:</span>
+      <span className="font-bold text-black">{t("languageSelector.language")}:</span>
       <ul className="flex space-x-2">
         {Object.keys(locales).map((locale) => (
           <li key={locale}>

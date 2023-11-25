@@ -23,8 +23,8 @@ export default function Index( {Map, sess}){
     if(session && (session.user.role == "admin")){
         return(
             <div className="mt-10 mb-10">
-                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={0}>Welcome Admin</h1>
-                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1}>Here is the Latitude and Longitude from the database</h1>
+                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={0}>{t("index.adminWelcome")}</h1>
+                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1}>{t("index.adminMsg")}</h1>
                 {search.map((r,i) =>(
                 <div className="bg-black " key={i+1}>
                 <div className=""key={i+2}>
@@ -40,8 +40,8 @@ export default function Index( {Map, sess}){
                                     </thead>
                                     <tbody key={i+11}>
                                         <tr className="font-semibold" key={i+12}>
-                                            <td key={i+13} className="pr-10">Latitude: {r.Lat}</td>
-                                            <td key={i+14} className="pr-10">Longitude: {r.Lon}</td>
+                                            <td key={i+13} className="pr-10">{t("index.lat")}: {r.Lat}</td>
+                                            <td key={i+14} className="pr-10">{t("index.lon")}: {r.Lon}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -56,10 +56,10 @@ export default function Index( {Map, sess}){
         if(session && (session.user.role == "user")){
             return(
                 <div className="mt-10 mb-10">
-                    <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1}>Welcome to Mongeese Map!</h1>
-                    <h1 className="font-semibold text-xl text-white mt-8 flex justify-center"key={2}>Now that you have logged in, you can use the upload function of our website so share your favorite places around the world!</h1>
-                    <h1 className="font-semibold text-xl text-white mt-8 flex justify-center"key={3}>Simply go to the map and give permission to share your location, our website then will show you the lat and long.</h1>
-                    <h1 className="font-semibold text-xl text-white mt-8 flex justify-center"key={4}>Once you copy them, you can click the Upload button and paste them there along with any information and a great picture you can share!!</h1>
+                    <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1}>{t("index.welcomeMsg")}</h1>
+                    <h1 className="font-semibold text-xl text-white mt-8 flex justify-center"key={2}>{t("index.msg1")}</h1>
+                    <h1 className="font-semibold text-xl text-white mt-8 flex justify-center"key={3}>{t("index.msg2")}</h1>
+                    <h1 className="font-semibold text-xl text-white mt-8 flex justify-center"key={4}>{t("index.msg3")}</h1>
             </div>
             );
         }
@@ -67,7 +67,7 @@ export default function Index( {Map, sess}){
 
     return(
         <div className="flex justify-center mt-10">
-        <h1 className="text-white">Please Log in using the Header</h1>
+        <h1 className="text-white">{t("index.please")}</h1>
     </div>
     )
     

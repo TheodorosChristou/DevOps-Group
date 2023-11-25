@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddLocationForm, {FormValues} from "../components/AddLocationForm"
 import axios from "axios";
 import {useMutation} from "react-query";
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -41,6 +42,6 @@ export default function Uploading(){
       isLoading={isLoading}
     triggerReset={isSuccess}
     onSubmit={(locationform) => mutate(locationform)}
-    />  </div> <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white">Submittion Failed, You have string values inside Lat or Lon!</h1>)}</div></div>;
+    />  </div> <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white"></h1>)}</div></div>;
 
 }
