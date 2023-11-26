@@ -37,7 +37,7 @@ export default function Header() {
             </div>
             <div className="flex space-x-2 ml-1.5 mt-1.5 text-black mb-1 font-bold italic text-3xl py-1 px-1 xs:px-3 sm:px-1">
               <a href="/">
-                <h1>Mongeeese {t("header.map")}</h1>
+                <h1>Mongeese {t("header.map")}</h1>
               </a>
             </div>
           </div>

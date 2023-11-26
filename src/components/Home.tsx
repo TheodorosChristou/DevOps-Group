@@ -48,7 +48,9 @@ export default function Index({ Map, sess }) {
             </div>
           ))}
         </div>
+      
       )}
+   
       {session && session.user.role === "user" && (
         <div className="mt-5 mx-auto max-w-[80%]">
           <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center" key={1}>

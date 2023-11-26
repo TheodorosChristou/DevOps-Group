@@ -1,12 +1,12 @@
 import Map from "../../../../models/Map";
 import dbConnect from "../../../../lib/dbConnect";
+import {wrapApiHandlerWithSentry} from '@sentry/nextjs'
 
-
-export default async function handler(req,res){
+const handler = async(req,res) =>{
     const {method} = req;
 
     await dbConnect();
-    
+
 
     switch(method){
         case "POST":
@@ -14,6 +14,8 @@ export default async function handler(req,res){
                 const map = await Map.create(req.body);
                 res.status(201).json({success: true, data: map})
             }catch(error) {
+
+
                 res.status(400).json({success: false, data: error})
             }
             break;
@@ -21,4 +23,5 @@ export default async function handler(req,res){
             default:
                 res.status(400).json({ success: false});
     }
-}
+};
+export default wrapApiHandlerWithSentry(handler, "/api/upload/index.tsx");
