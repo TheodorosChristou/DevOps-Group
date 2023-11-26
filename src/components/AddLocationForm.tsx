@@ -89,7 +89,7 @@ export default function AddLocationForm(props){
       
     return(
     <div  className="flex justify-center">
-    <div className="flex flex-col space-y-3 bg-gray-600	 p-7 rounded-lg">
+    <div className="flex flex-col space-y-3 bg-gray-600	 p-7 rounded-lg max-w-[80%] mx-auto">
         <h3 className="text-lg text-center mb-2 font-bold underline underline-offset-4"> {t("AddLocationForm.upload")}</h3>
         <div>
         </div>
@@ -102,7 +102,7 @@ export default function AddLocationForm(props){
             <label className="font-semibold"> {t("index.lat")} </label>
             <input
             {...register("Lat", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
+            className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="float"
             placeholder={t("index.lat")}
             />
@@ -112,7 +112,7 @@ export default function AddLocationForm(props){
             <label className="font-semibold"> {t("index.lon")} </label>
             <input
             {...register("Lon", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
+            className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="float"
             placeholder={t("index.lon")}
             />
@@ -122,7 +122,7 @@ export default function AddLocationForm(props){
             <label className="font-semibold"> {t("AddLocationForm.city")} </label>
             <input
             {...register("City", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
+            className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="string"
             placeholder= {t("AddLocationForm.city")}
             />
@@ -132,7 +132,7 @@ export default function AddLocationForm(props){
             <label className="font-semibold"> {t("AddLocationForm.description")} </label>
             <input
             {...register("Description", FieldValidation(valid))}
-            className="border-2 rounded-md p-2 ml-2 text-black"
+            className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="string"
             placeholder={t("AddLocationForm.description")}
             />
@@ -150,7 +150,7 @@ export default function AddLocationForm(props){
             </>
             ))}
             <div className=" flex justify-center">
-                <div className="flex justify-center mt-5 bg-black text-white rounded-full max-w-[50%]">
+                <div className="flex justify-center mt-5 bg-black text-white rounded-full w-full">
                 <button className="bg-black text-white bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("AddLocationForm.submit")}</button>
                 </div>
             </div>
