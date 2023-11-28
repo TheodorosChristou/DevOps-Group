@@ -75,7 +75,7 @@ export default function Header() {
                   <div>
                     <h1 className="text-5xl cursor-default mb-1">|</h1>
                   </div>
-                  <div className="flex items-center text-xl mt-2 py-1 px-1 xs:px-3 sm:px-3 cursor-default">
+                  <div className="flex items-center sm:text-l text-md mt-2 py-1 px-1 xs:px-3 sm:px-1 cursor-default">
                     <h1>{t("header.welcome")} {session.user.name}</h1>
                   </div>
                   <div
@@ -83,7 +83,7 @@ export default function Header() {
                     onClick={handleSignOut}
                   >
                     <a
-                      className="flex items-center text-xl mt-2 hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 rounded-full mb-1"
+                      className="flex items-center text-xl mt-2 hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 px-2 rounded-full mb-1"
                     >
                       <LogoutIcon className="h-6 w-6 mt-1" />
                       {t("header.logout")}

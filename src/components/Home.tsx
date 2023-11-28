@@ -19,28 +19,34 @@ export default function Index({ Map, sess }) {
     <div className="mt-10 mb-10">
       {session && session.user.role === "admin" && (
         <div className="bg-black">
-          <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center" key={0}>
+          <h1 className="font-semibold text-xl text-md text-white mt-8 underline underline-offset-8 flex justify-center" key={0}>
             {t("index.adminWelcome")}
           </h1>
-          <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center" key={1}>
+          <h1 className="font-semibold sm:text-xl text-md text-white mt-8 underline underline-offset-8 flex justify-center" key={1}>
             {t("index.adminMsg")}
           </h1>
           {search.map((r, i) => (
-            <div className="p-10 bg-gray-300 rounded-full flex max-w-[80%] mx-auto mt-5" key={i + 1}>
-              <table key={i + 2}>
+            <div className="p-5 sm:p-10 bg-gray-300 rounded-full w-full md:max-w-xl mx-auto mt-5 sm:max-h-[20%]" key={i + 1}>
+              <table className="w-full"key={i + 2}>
                 <thead key={i + 3}>
                   <tr key={i + 4}>
-                    <th key={i + 5} className="pr-10"></th>
-                    <th key={i + 6} className="pr-10"></th>
+                    <th key={i + 5} className="pr-4 sm:pr-8"></th>
+                    <th key={i + 6} className="pr-4 sm:pr-8"></th>
                   </tr>
                 </thead>
                 <tbody key={i + 7}>
-                  <tr className="font-semibold" key={i + 8}>
-                    <td key={i + 9} className="pr-10">
-                      {t("index.lat")}: {r.Lat}
+                  <tr className="font-semibold flex flex-col" key={i + 8}>
+                    <td key={i + 9} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <span className="block sm:inline">{t("index.lat")}: {r.Lat}</span>
                     </td>
-                    <td key={i + 10} className="pr-10">
-                      {t("index.lon")}: {r.Lon}
+                    <td key={i + 10} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <span className="block sm:inline">{t("index.lon")}: {r.Lon}</span>
+                    </td>
+                    <td key={i + 10} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <span className="block sm:inline">{t("city")}: {"BlahBLAHBLAHBLAHABKA"}</span>
+                    </td>
+                    <td key={i + 10} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <span className="block sm:inline">{t("description")}: {"BlahBLAHBLAHBLAHABKA"}</span>
                     </td>
                   </tr>
                 </tbody>
