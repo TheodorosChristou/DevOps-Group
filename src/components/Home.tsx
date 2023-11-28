@@ -1,5 +1,7 @@
+import axios from "axios";
 import "../i18n";
 import { useTranslation } from 'react-i18next';
+import { useState } from "react"
 
 export default function Index({ Map, sess }) {
   const { t } = useTranslation();
@@ -15,6 +17,18 @@ export default function Index({ Map, sess }) {
     console.log(role);
   }
 
+  const [mapState, setmapState] = useState(map.Map);
+
+  const handleDelete = async (id) => {
+
+      await axios.delete(`/api/changes/${id}`);
+      setmapState(mapState.filter((r,_i) => r._id !== id))
+
+  }
+
+  const redirect = (url, asLink = true) =>
+  asLink ? (window.location.href = url) : window.location.replace(url);
+
   return (
     <div className="mt-10 mb-10">
       {session && session.user.role === "admin" && (
@@ -25,8 +39,8 @@ export default function Index({ Map, sess }) {
           <h1 className="font-semibold sm:text-xl text-md text-white mt-8 underline underline-offset-8 flex justify-center" key={1}>
             {t("index.adminMsg")}
           </h1>
-          {search.map((r, i) => (
-            <div className="p-5 sm:p-10 bg-gray-300 rounded-full w-full md:max-w-xl mx-auto mt-5 sm:max-h-[20%]" key={i + 1}>
+          {mapState.map((r, i) => (
+            <div className="p-5 sm:p-10 bg-gray-300 rounded-full w-full md:max-w-xl mx-auto mt-7 sm:max-h-[20%]" key={i + 1}>
               <table className="w-full"key={i + 2}>
                 <thead key={i + 3}>
                   <tr key={i + 4}>
@@ -42,12 +56,14 @@ export default function Index({ Map, sess }) {
                     <td key={i + 10} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
                     <span className="block sm:inline">{t("index.lon")}: {r.Lon}</span>
                     </td>
-                    <td key={i + 10} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
-                    <span className="block sm:inline">{t("city")}: {"BlahBLAHBLAHBLAHABKA"}</span>
+                    <td key={i + 11} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <span className="block sm:inline">{t("city")}: {r.City}</span>
                     </td>
-                    <td key={i + 10} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
-                    <span className="block sm:inline">{t("description")}: {"BlahBLAHBLAHBLAHABKA"}</span>
+                    <td key={i + 12} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <span className="block sm:inline">{t("description")}: {r.Description}</span>
                     </td>
+                    <td key={i+15} className="pr-10"><button onClick={() => handleDelete(r._id)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">Delete</button></td>
+                    <td key={i+20}className="pr-10"><button onClick={() => redirect(`/route/${r._id}/edit/`)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">Update</button></td>
                   </tr>
                 </tbody>
               </table>

@@ -144,7 +144,7 @@ export default function AddLocationForm(props){
             {(icon && (
               <>
             <div className="pt-5 flex justify-center">
-              <TrashIcon className="w-5 h-5 cursor-pointer" onClick={() => setIcon("")}/>
+              <TrashIcon className="w-5 h-5 cursor-pointer" onClick={() => setIcon(null)}/>
               <AdvancedImage className="border-2 border-black mr-1" cldImg={Cloudinary.image(icon).resize(thumbnail().width(200).height(200))}/> 
             </div>
             </>
