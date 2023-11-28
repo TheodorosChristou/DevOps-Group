@@ -7,16 +7,16 @@ const locales = {
 };
 
 const LanguageSelector: React.FC = () => {
-  const {t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
-    <div className="flex space-x-2 items-center">
+    <div className="flex flex-col items-center">
       <span className="font-bold text-black">{t("languageSelector.language")}:</span>
-      <ul className="flex space-x-2">
+      <ul className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
         {Object.keys(locales).map((locale) => (
           <li key={locale}>
             <button
-              className={`text-black hover:text-gray-500 focus:outline-none border-2 border-black px-3 py-1 rounded-full ${
+              className={`text-black hover:text-gray-500 focus:outline-none border-2 border-black px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm ${
                 i18n.resolvedLanguage === locale ? 'font-bold' : 'font-normal'
               }`}
               type="button"

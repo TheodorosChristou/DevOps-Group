@@ -4,15 +4,9 @@ import Map from "../../models/Map";
 import {useSession} from "next-auth/react"
 import dynamic from "next/dynamic";
 
-
 const DynamicHome = dynamic(() => import("../components/Home"), {
     ssr: false,
   });
-
-
-
-
-
 
 export default function Home(Map){
 
@@ -31,7 +25,6 @@ export default function Home(Map){
 
 
 }
-
 
 export const getServerSideProps : GetServerSideProps = async () => {
     

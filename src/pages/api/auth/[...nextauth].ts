@@ -4,6 +4,8 @@ import GithubProvider, {GithubProfile} from "next-auth/providers/github"
 import GoogleProvider, { GoogleProfile } from "next-auth/providers/google"
 import clientPromise from "../../../../lib/mongodb"
 import { AdapterUser } from "next-auth/adapters";
+import * as Sentry from "@sentry/nextjs";
+
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   adapter: MongoDBAdapter(clientPromise),
@@ -48,6 +50,11 @@ export const authOptions = {
       session.user.id = user.id;
       session.user.role = user.role;
       return session;
+    },
+    catch (error) {
+      // Capture the error and send it to Sentry
+      Sentry.captureException(error);
+      throw error; // Rethrow the error after capturing it
     },
   },
 }
