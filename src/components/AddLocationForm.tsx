@@ -124,6 +124,7 @@ export default function AddLocationForm(props){
             {...register("City", FieldValidation(valid))}
             className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="string"
+            maxLength={25}
             placeholder= {t("AddLocationForm.city")}
             />
             <p>{errors.City?.message}</p>
@@ -134,6 +135,7 @@ export default function AddLocationForm(props){
             {...register("Description", FieldValidation(valid))}
             className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="string"
+            maxLength={50}
             placeholder={t("AddLocationForm.description")}
             />
             <p>{errors.Description?.message}</p>

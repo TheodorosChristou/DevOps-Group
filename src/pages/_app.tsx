@@ -1,8 +1,6 @@
 // _app.tsx
 import { AppProps } from 'next/app';
 import Heading from "@/components/Heading";
-import { I18nextProvider } from 'react-i18next';
-import i18n from '../i18n'; // Adjust the path accordingly
 import '../styles/globals.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SessionProvider } from 'next-auth/react';
@@ -21,7 +19,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
 
   return (
     <SessionProvider session={session}>
-      <I18nextProvider i18n={i18n}>
         <div className="bg-black min-h-screen pt-[64px] overflow-x-hidden">
           <Script src="https://widget.cloudinary.com/v2.0/global/all.js" />
           <Heading />
@@ -30,7 +27,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
             <Component {...pageProps} />
           </QueryClientProvider>
         </div>
-      </I18nextProvider>
     </SessionProvider>
   );
 }

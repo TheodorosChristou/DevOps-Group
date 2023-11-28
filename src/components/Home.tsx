@@ -40,7 +40,7 @@ export default function Index({ Map, sess }) {
             {t("index.adminMsg")}
           </h1>
           {mapState.map((r, i) => (
-            <div className="p-5 sm:p-10 bg-gray-300 rounded-full w-[90%] md:max-w-xl mx-auto mt-7 sm:max-h-[20%]" key={i + 1}>
+            <div className="sm:p-10 bg-gray-300 rounded-lg w-[90%] md:max-w-sm mx-auto mt-7 sm:max-h-[20%]" key={i + 1}>
               <table className="w-full ml-5"key={i + 2}>
                 <thead key={i + 3}>
                   <tr key={i + 4}>
