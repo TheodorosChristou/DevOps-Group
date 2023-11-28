@@ -17,18 +17,21 @@ export default function Uploading(){
 
     const [validation, setValidation] = useState(true);
 
+    var validate: Boolean
+
   
     const {isLoading, isSuccess, isError, mutate} = useMutation( async(locationform: FormValues) =>{
 
-        if(locationform.Lat*0 == 0){
+        if((locationform.Lat*0 == 0) && (locationform.Lon*0 == 0)){
+            validate = true
+            console.log(validate)
         }else{
          setValidation(false)
+         validate = false
+         console.log(validate)
         }
-        if(locationform.Lon*0 == 0){
-        }else{
-         setValidation(false)
-        }
-        if(validation == true){
+        if(validate == true){
+            console.log(validate)
             console.log("creating new marker")
             await axios.post("/api/upload/", locationform);
             redirect("/map");
@@ -40,7 +43,6 @@ export default function Uploading(){
   
       return <div><div className="text-white mt-5"><AddLocationForm
       isLoading={isLoading}
-    triggerReset={isSuccess}
     onSubmit={(locationform) => mutate(locationform)}
     />  </div> <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white">{t("uploading.sorry")}</h1>)}</div></div>;
 
