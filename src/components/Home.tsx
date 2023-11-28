@@ -57,13 +57,13 @@ export default function Index({ Map, sess }) {
                     <span className="block sm:inline">{t("index.lon")}: {r.Lon}</span>
                     </td>
                     <td key={i + 11} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
-                    <span className="block sm:inline">{t("city")}: {r.City}</span>
+                    <span className="block sm:inline">{t("AddLocationForm.city")}: {r.City}</span>
                     </td>
                     <td key={i + 12} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
-                    <span className="block sm:inline">{t("description")}: {r.Description}</span>
+                    <span className="block sm:inline">{t("AddLocationForm.description")}: {r.Description}</span>
                     </td>
-                    <td key={i+15} className="pr-10"><button onClick={() => handleDelete(r._id)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">Delete</button></td>
-                    <td key={i+20}className="pr-10"><button onClick={() => redirect(`/route/${r._id}/edit/`)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">Update</button></td>
+                    <td key={i+15} className="pr-10"><button onClick={() => handleDelete(r._id)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.delete")}</button></td>
+                    <td key={i+20}className="pr-10"><button onClick={() => redirect(`/route/${r._id}/edit/`)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.update")}</button></td>
                   </tr>
                 </tbody>
               </table>
