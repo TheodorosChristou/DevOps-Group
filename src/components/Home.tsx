@@ -36,12 +36,12 @@ export default function Index({ Map, sess }) {
           <h1 className="font-semibold text-xl text-md text-white mt-8 underline underline-offset-8 flex justify-center" key={0}>
             {t("index.adminWelcome")}
           </h1>
-          <h1 className="font-semibold sm:text-xl text-md text-white mt-8 underline underline-offset-8 flex justify-center" key={1}>
+          <h1 className="font-semibold ml-5 sm:text-xl text-sm text-white mt-8 underline underline-offset-8 flex justify-center" key={1}>
             {t("index.adminMsg")}
           </h1>
           {mapState.map((r, i) => (
-            <div className="p-5 sm:p-10 bg-gray-300 rounded-full w-full md:max-w-xl mx-auto mt-7 sm:max-h-[20%]" key={i + 1}>
-              <table className="w-full"key={i + 2}>
+            <div className="p-5 sm:p-10 bg-gray-300 rounded-full w-[90%] md:max-w-xl mx-auto mt-7 sm:max-h-[20%]" key={i + 1}>
+              <table className="w-full ml-5"key={i + 2}>
                 <thead key={i + 3}>
                   <tr key={i + 4}>
                     <th key={i + 5} className="pr-4 sm:pr-8"></th>
@@ -50,20 +50,20 @@ export default function Index({ Map, sess }) {
                 </thead>
                 <tbody key={i + 7}>
                   <tr className="font-semibold flex flex-col" key={i + 8}>
-                    <td key={i + 9} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <td key={i + 9} className="mb-2 sm:mb-1 flex justify-center">
                     <span className="block sm:inline">{t("index.lat")}: {r.Lat}</span>
                     </td>
-                    <td key={i + 10} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <td key={i + 10} className="mb-2 sm:mb-1 flex justify-center">
                     <span className="block sm:inline">{t("index.lon")}: {r.Lon}</span>
                     </td>
-                    <td key={i + 11} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <td key={i + 11} className=" mb-2 sm:mb-1 flex justify-center">
                     <span className="block sm:inline">{t("AddLocationForm.city")}: {r.City}</span>
                     </td>
-                    <td key={i + 12} className="pr-4 mb-2 sm:mb-1 sm:pr-8">
+                    <td key={i + 12} className="mb-2 sm:mb-1 flex justify-center">
                     <span className="block sm:inline">{t("AddLocationForm.description")}: {r.Description}</span>
                     </td>
-                    <td key={i+15} className="pr-10"><button onClick={() => handleDelete(r._id)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.delete")}</button></td>
-                    <td key={i+20}className="pr-10"><button onClick={() => redirect(`/route/${r._id}/edit/`)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.update")}</button></td>
+                    <td key={i+15} className="flex justify-center"><button onClick={() => handleDelete(r._id)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.delete")}</button></td>
+                    <td key={i+20}className="flex justify-center"><button onClick={() => redirect(`/route/${r._id}/edit/`)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.update")}</button></td>
                   </tr>
                 </tbody>
               </table>
