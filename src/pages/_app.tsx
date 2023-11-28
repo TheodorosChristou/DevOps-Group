@@ -9,9 +9,12 @@ import { SessionProvider } from 'next-auth/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import Script from 'next/script';
 import dynamic from 'next/dynamic';
+import { init } from '@sentry/nextjs';
 
 const queryClient = new QueryClient();
-
+init({
+  dsn: "https://26a8fb92c1f4ddf9fc67d46918e9401c@o4506270187585536.ingest.sentry.io/4506292870840320",
+});
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const cld = new Cloudinary({ cloud: { cloudName: 'dmmj64ogm' } });
   const Header = dynamic(() => import('../components/Header'), { ssr:false} )

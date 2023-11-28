@@ -3,8 +3,9 @@ import dbConnect from "../../../../lib/dbConnect";
 import fs from "node:fs/promises";
 import path from "node:path";
 import Map from "../../../../models/Map";
+import { wrapApiHandlerWithSentry } from "@sentry/nextjs";
 
-export default async function handler(_, res: NextApiResponse){
+const handler = async(_, res: NextApiResponse) => {
     try {
         
         await dbConnect();
@@ -26,3 +27,4 @@ export default async function handler(_, res: NextApiResponse){
         
     }
 }
+export default wrapApiHandlerWithSentry(handler,"/api/utility/index.ts" );
