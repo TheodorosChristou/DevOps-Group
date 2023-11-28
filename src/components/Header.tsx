@@ -24,18 +24,21 @@ export default function Header() {
       <nav className="p-2 items-center w-full flex justify-between">
         <div className="text-black h-12 w-full gap-0 sm:gap-3 flex items-center justify-between">
           <div className="flex align-center">
-            <div className="flex space-x-2">
+            <div className="flex space-x-5  ">
+            <div className="hidden sm:hidden md:block">
+
               <Link href="/">
                 <Image
                   alt="image"
                   src="/img/mongoose.PNG"
-                  width={60}
-                  height={60}
-                  className="cursor-pointer"
+                  width={80}
+                  height={80}
+                  className="cursor-pointer max-h-sm max-w-lg py-3 mt-0 "
                 />
               </Link>
             </div>
-            <div className="flex space-x-2 ml-1.5 mt-1.5 text-black mb-1 font-bold italic text-3xl py-1 px-1 xs:px-3 sm:px-1">
+            </div>
+            <div className="flex space-x-2 ml-1 sm:mt-3 text-black mb-2 font-bold italic text-xl sm:text-2xl sm:py-2 md:py-1 px-0 xs:px-3 sm:px-1 sm:pt-2">
               <a href="/">
                 <h1>Mongeese {t("header.map")}</h1>
               </a>
