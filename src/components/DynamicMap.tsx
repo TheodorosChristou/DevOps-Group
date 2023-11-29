@@ -10,6 +10,7 @@ import { thumbnail } from '@cloudinary/url-gen/actions/resize';
 import { useTranslation } from 'react-i18next';
 
 
+
 export default function DynamicMap({ mapData }) {
   const [userLocation, setUserLocation] = useState<LatLngTuple | null>(null);
   const [isDefaultLocation, setIsDefaultLocation] = useState<boolean>(false);
