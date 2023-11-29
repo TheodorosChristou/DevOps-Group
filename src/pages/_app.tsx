@@ -9,6 +9,7 @@ import Script from 'next/script';
 import dynamic from 'next/dynamic';
 import { init } from '@sentry/nextjs';
 import { I18nextProvider } from 'react-i18next';
+import ConsentPopup from '../components/CookieConsent'
 import i18n from '../i18n'; // Adjust the path accordingly
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <div className="bg-black min-h-screen pt-[64px] overflow-x-hidden">
           <Script src="https://widget.cloudinary.com/v2.0/global/all.js" />
           <Heading />
+          <ConsentPopup />
           <QueryClientProvider client={queryClient}>
             <Header />
             <Component {...pageProps} />
