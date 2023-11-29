@@ -74,8 +74,8 @@ export default function DynamicMap({ mapData }) {
 
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center">
-      <div className="w-screen h-screen">
+    <div className="z-5 fixed inset-0 top-12 justify-center">
+      <div className="w-full h-screen">
         {/* Map Rendering */}
         <MapContainer
           style={{ width: '100%', height: '100%' }}
