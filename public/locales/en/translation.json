@@ -1,7 +1,7 @@
 {
     "index":{
             "adminWelcome":"Welcome Admin",
-            "adminMsg":"Here is the Latitude and Longitude from the database",
+            "adminMsg":"Here is the entries from the database",
             "lat":"Latitude",
             "lon":"Longitude",
             "delete":"Delete",
