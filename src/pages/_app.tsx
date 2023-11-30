@@ -11,6 +11,8 @@ import { init } from '@sentry/nextjs';
 import { I18nextProvider } from 'react-i18next';
 import ConsentPopup from '../components/CookieConsent'
 import i18n from '../i18n'; // Adjust the path accordingly
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+
 
 const queryClient = new QueryClient();
 init({
@@ -26,6 +28,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
         <div className="bg-black min-h-screen pt-[64px] overflow-x-hidden">
           <Script src="https://widget.cloudinary.com/v2.0/global/all.js" />
           <Heading />
+           <GoogleAnalytics GA_MEASUREMENT_ID="G-4WX1KY97EQ"></GoogleAnalytics>
           <ConsentPopup />
           <QueryClientProvider client={queryClient}>
             <Header />
