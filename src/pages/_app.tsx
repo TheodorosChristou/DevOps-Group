@@ -19,7 +19,6 @@ init({
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const cld = new Cloudinary({ cloud: { cloudName: 'dmmj64ogm' } });
   const Header = dynamic(() => import('../components/Header'), { ssr:false} )
-
   return (
     <SessionProvider session={session}>
       <I18nextProvider i18n={i18n}>

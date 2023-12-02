@@ -45,7 +45,9 @@
             "home": "Home",
             "upload": "Upload",
             "login": "Login",
-            "logout": "Logout"
+            "logout": "Logout",
+            "documentation":"Documentation",
+            "legal":"Legal"
     },
 
     "page404":{
@@ -61,6 +63,11 @@
 
     "languageSelector":{
         "language":"Language"
+    },
+
+    "legal":{
+        "legalTitle":"Moongese - Legal Information",
+        "legalText":"The software bundled with and powering this project includes the following open-source components, all released under the following licenses:"
     }
     
 
