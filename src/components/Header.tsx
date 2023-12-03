@@ -172,7 +172,22 @@ export default function Header() {
                     >
                       {t("header.map")}
                     </a>
-                   
+                    <a
+                      href="/legal"
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabIndex={-1}
+                    >
+                      {t("header.legal")}
+                    </a>
+                    <a
+                      href="/documentation"
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabIndex={-1}
+                    >
+                      {t("header.documentation")}
+                    </a>
                     {session && (
                       <a
                         href="/upload"
