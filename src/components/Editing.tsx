@@ -1,12 +1,8 @@
-import {useForm} from 'react-hook-form'
+
 import AddLocationForm, {FormValues} from "../components/AddLocationForm"
-import { GetServerSideProps } from "next";
-import dbConnect from "../../lib/dbConnect";
-import Map from "../../models/Map";
 import {useState} from "react";
 import axios from "axios";
 import {useMutation} from "react-query";
-import { redirect } from "next/navigation";
 import { useTranslation } from 'react-i18next';
 
 

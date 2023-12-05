@@ -2,6 +2,7 @@ import axios from "axios";
 import "../i18n";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react"
+
 export default function Index({ Map, sess }) {
   const { t } = useTranslation();
   const map = Map;
