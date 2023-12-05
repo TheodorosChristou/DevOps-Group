@@ -72,6 +72,14 @@ export default function Header() {
                 {t("header.legal")}
               </a>
             </div>
+            <div className="mx-2.5 gap-1 hidden lg:flex">
+              <a
+                className="text-xl hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 rounded-full"
+                href="/documentation"
+              >
+                Documentation
+              </a>
+            </div>
             {session ? (
               <>
                 <div className="mx-2.5 gap-1 hidden lg:flex">

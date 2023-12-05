@@ -2,6 +2,7 @@
 import { AppProps } from 'next/app';
 import Heading from "@/components/Heading";
 import '../styles/globals.css';
+import '../styles/markdown.css'
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { SessionProvider } from 'next-auth/react';
 import { Cloudinary } from '@cloudinary/url-gen';
@@ -12,7 +13,6 @@ import { I18nextProvider } from 'react-i18next';
 import ConsentPopup from '../components/CookieConsent'
 import i18n from '../i18n'; // Adjust the path accordingly
 import GoogleAnalytics from "@/components/GoogleAnalytics";
-
 
 const queryClient = new QueryClient();
 init({
