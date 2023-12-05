@@ -57,7 +57,10 @@ export default function Legal() {
                         4. Nginx:
                         - <a href="/docs/Nginx" style={linkStyle}>Nginx Documentation</a>
                     </p>
-
+                    <p className="mb-4">
+                        5. Azure Guide:
+                        - <a href="/docs/Azure_Virtual_Machine_Setup_Guide" style={linkStyle}>Azure Guide Documentation</a>
+                    </p>
                     <h1 className="text-lg font-bold uppercase pb-2">Wep Pages / APIs</h1>
 
                     <h2 className="pb-2">CRUD API</h2>
