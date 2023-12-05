@@ -134,17 +134,12 @@ export default function Legal() {
                     </p>
                     
                     <p className="mb-4">
-                        2. Field Validation Component:
-                        - <a href="/docs/Field Validation Component" style={linkStyle}>Field Validation Component Documentation</a>
-                    </p>
-                    
-                    <p className="mb-4">
-                        3. Upload Component:
+                        2. Upload Component:
                         - <a href="/docs/Upload Component" style={linkStyle}>Upload Component Documentation</a>
                     </p>
                     
                     <p className="mb-4">
-                        4. Upload Page:
+                        3. Upload Page:
                         - <a href="/docs/Upload Page" style={linkStyle}>Upload Page Documentation</a>
                     </p>
 
