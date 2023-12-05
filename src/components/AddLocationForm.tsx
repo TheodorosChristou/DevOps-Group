@@ -141,7 +141,7 @@ export default function AddLocationForm(props){
             <p>{errors.Description?.message}</p>
             </div>
             <div className="pt-5 flex justify-center">
-            <a className="gray-outline-button" onClick={(handleUpload)}><CloudUploadIcon className="h-5 w-5"/>{t("AddLocationForm.uploadphoto")}</a>
+            <a data-testid='uploadPhoto'className="gray-outline-button" onClick={(handleUpload)}><CloudUploadIcon className="h-5 w-5"/>{t("AddLocationForm.uploadphoto")}</a>
             </div>
             {(icon && (
               <>

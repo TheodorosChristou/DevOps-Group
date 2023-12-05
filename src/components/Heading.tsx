@@ -8,7 +8,7 @@ export default function Heading(){
         
         <div>
         <Head>
-            <title>{t('heading.heading')}</title>
+            <title data-testid= "title">{t('heading.heading')}</title>
             <meta name="description" content="Home" />
             <link rel="icon" href="/img/mongoose.ico" />
         </Head>

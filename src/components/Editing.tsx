@@ -60,7 +60,7 @@ export default function Editing(Locationform){
     onSubmit={(locationform) => mutate(locationform) }
     values={locationformValues}
          label="update location"/>
-    <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white">{t("uploading.sorry")}</h1>)}</div></div> 
+    <div className="text-white mt-5 flex justify-center">{!validation && (<h1 data-testid="sorryMsg" className="text-white">{t("uploading.sorry")}</h1>)}</div></div> 
         )
 }
 
