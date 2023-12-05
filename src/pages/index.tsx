@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import dbConnect from "../../lib/dbConnect";
 import Map from "../../models/Map";
-import {useSession} from "next-auth/react"
+import useSession from "../hooks/useNextAuth";
 
 
 
@@ -19,10 +19,10 @@ export default function Home(Map){
         user = session.user.name
     }
 
-    if(session){
+    if(session && process.env.NEXT_PUBLIC_TESTING){
         return(
             <div className="mt-10 mb-10">
-                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1}>Here is the Lat and Long from the database</h1>
+                <h1 className="font-semibold text-xl text-white mt-8 underline underline-offset-8 flex justify-center"key={1} data-test='title' >Here is the Lat and Long from the database</h1>
                 {search.map((r,i) =>(
                 <div className="bg-black " key={i+1}>
                 <div className=""key={i+2}>
@@ -37,7 +37,7 @@ export default function Home(Map){
                                         </tr>
                                     </thead>
                                     <tbody key={i+11}>
-                                        <tr className="font-semibold" key={i+12}>
+                                        <tr className="font-semibold" key={i+12} data-test='lat-lon-values'>
                                             <td key={i+13} className="pr-10">Lat: {r.Lat}</td>
                                             <td key={i+14} className="pr-10">Lon: {r.Lon}</td>
                                         </tr>

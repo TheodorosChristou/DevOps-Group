@@ -17,10 +17,10 @@ export default function DynamicMap({ mapData }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
-      <div className="w-screen h-screen">
+      <div className="w-screen h-screen" data-test='map-item'>
         {/* Map Rendering */}
         <MapContainer style={{ width: '100%', height: '100%' }} center={[32.5072, 12.1276]} zoom={10} scrollWheelZoom={true}>
-          <TileLayer
+          <TileLayer 
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />

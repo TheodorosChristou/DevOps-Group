@@ -40,7 +40,7 @@ export default function AddLocationForm(props){
     return(
     <div  className="flex justify-center">
     <div className="flex flex-col space-y-3 bg-gray-600	 p-7 rounded-lg">
-        <h3 className="text-lg text-center mb-2 font-bold underline underline-offset-4"> Upload your Location!</h3>
+        <h3 data-test='upload-form' className= "text-lg text-center mb-2 font-bold underline underline-offset-4"> Upload your Location!</h3>
         <div>
         </div>
         <form
@@ -55,8 +55,9 @@ export default function AddLocationForm(props){
             className="border-2 rounded-md p-2 ml-2 text-black"
             type="float"
             placeholder="Lat"
+            data-test='lat-input'
             />
-            <p>{errors.Lat?.message}</p>
+            <p data-test='lat-error'>{errors.Lat?.message}</p>
             </div>
             <div>
             <label className="font-semibold"> Lon </label>
@@ -65,8 +66,9 @@ export default function AddLocationForm(props){
             className="border-2 rounded-md p-2 ml-2 text-black"
             type="float"
             placeholder="Lon"
+            data-test='lon-input'
             />
-            <p>{errors.Lon?.message}</p>
+            <p data-test='lon-error'>{errors.Lon?.message}</p>
             </div>
             <div>
             <label className="font-semibold"> City </label>
@@ -75,8 +77,9 @@ export default function AddLocationForm(props){
             className="border-2 rounded-md p-2 ml-2 text-black"
             type="string"
             placeholder="City"
+            data-test='city-input'
             />
-            <p>{errors.City?.message}</p>
+            <p data-test='city-error'>{errors.City?.message}</p>
             </div>
             <div>
             <label className="font-semibold"> Description </label>
@@ -85,12 +88,13 @@ export default function AddLocationForm(props){
             className="border-2 rounded-md p-2 ml-2 text-black"
             type="string"
             placeholder="Description"
+            data-test='desc-input'
             />
-            <p>{errors.Description?.message}</p>
+            <p data-test='desc-error'>{errors.Description?.message}</p>
             </div>
             <div className=" flex justify-center">
                 <div className="flex justify-center mt-5 bg-black text-white rounded-full max-w-[50%]">
-                <button className="bg-black text-white bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">Submit</button>
+                <button className="bg-black text-white bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold" data-test='submit-button'>Submit</button>
                 </div>
             </div>
         </form>

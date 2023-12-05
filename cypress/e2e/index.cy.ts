@@ -9,7 +9,7 @@ describe("Index Page Test", () => {
 
     it("Checks that lat and lon values are shown", () => {
         cy.get("[data-test='lat-lon-values']").should("exist");
-        cy.get("[data-test='lat-lon-values']").should("have.length", 4);
+        cy.get("[data-test='lat-lon-values']").should("have.length", 14);
         cy.get("[data-test='lat-lon-values']").contains("51.5072");
     });
 
