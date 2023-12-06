@@ -5,31 +5,31 @@ TEAM MEMBERS - Theodoros Christou, Arooj Fatima, Harriet Goodyear, Maye Hunt, Ge
 **Link to documentation index**(Documentation/IndexDoc.md)
 
 Technologies:
--[React]
--[NextJS]
--[Node]
--[Typescript]
+- React
+- NextJS
+- Node
+- Typescript
 
 Code Testing:
--[Cypress]
--[React]
--[Github Workflow]
--[Jest]
+- Cypress
+- React
+- Github Workflow
+- Jest
 
 Database:
--[Mongoose]
--[Cloudinary]
+- Mongoose
+- Cloudinary
 
 API:
--[Swagger]
+- Swagger
 
 Deployment:
--[Azure]
--[Docker]
+- Azure
+- Docker
 
 Monitoring:
--[Sentry]
--[Google Analytics]
+- Sentry
+- Google Analytics
 
 **How to set up in a Local Environment:**
 
