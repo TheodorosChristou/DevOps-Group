@@ -22,7 +22,6 @@ WELCOME TO DOCUMENTATION FOR DEV OPS
 - [UPLOAD PAGE](Web%20Pages/Upload/Upload%20Page.md)
 
 **SERVER SIDE** 
-
 - [CRETBOT](Server%20Side/Cretbot.md)
 - [DOCKER COMPOSE](Server%20Side/DockerCompose.md)
 - [DOCKER FILE](Server%20Side/DockerfileDocumentation.md)
@@ -35,14 +34,10 @@ WELCOME TO DOCUMENTATION FOR DEV OPS
 **JEST-REACT**
 - [JEST-REACT](Jest-React/Jest-Reactdocs.md)
 
+**GOOGLE ANALYTICS**
+- [GOOGLE ANALYTICS](Google%20Analytics/Google%20Analytics.md)
+
 **CYPRESS TESTING**
 - [CYPRESS UPLOAD FORM](/Cypress/UploadCypressForm.md)
 - [CYPRESS MAP](/Cypress/CypressMap.md)
 - [CYPRESS INDEX](/Cypress/CypressIndex.md)
-**GOOGLE ANALYTICS**
-- [GOOGLE ANALYTICS](Google%20Analytics/Google%20Analytics.md)
-
-**CYPRESS TESTS**
-- [CYPRESS FORM UPLOAD](Cypress/UploadCypressForm.md)
-- [CYPRESS MAP](Cypress/CypressMap.md)
-- [CYPRESS INDEX](Cypress/CypressIndex.md)
