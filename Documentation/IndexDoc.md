@@ -37,3 +37,8 @@ WELCOME TO DOCUMENTATION FOR DEV OPS
 
 **GOOGLE ANALYTICS**
 - [GOOGLE ANALYTICS](Google%20Analytics/Google%20Analytics.md)
+
+**CYPRESS**
+- [CYPRESS UPLOAD FORM TEST](Cypress/UploadCypressForm.md)
+- [CYPRESS MAP TEST](Cypress/CypressMap.md)
+- [CYPRESS INDEX TEST](Cypress/CypressIndex.md)
