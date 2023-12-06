@@ -2,7 +2,7 @@
 
 **TEAM MEMBERS** - Theodoros Christou, Arooj Fatima, Harriet Goodyear, Maye Hunt, Georgios Kleitou
 
-**Link to documentation index**(Documentation/IndexDoc.md)
+**[Link to documentation index](Documentation/IndexDoc.md)**
 
 ### Technologies:
 - React
