@@ -23,7 +23,7 @@ describe('Uploading Component', () => {
       Lon: -74.006,
       City: 'New York',
       Description: 'Sample Description',
-      Photos: ['photo1.jpg', 'photo2.jpg'],
+      Photos: ['photo1.jpg'],
     };
 
     // Mock axios.post to resolve with a success response
@@ -41,7 +41,7 @@ describe('Uploading Component', () => {
     fireEvent.change(screen.getByPlaceholderText('index.lon'), { target: { value: mockLocationForm.Lon } });
     fireEvent.change(screen.getByPlaceholderText('AddLocationForm.city'), { target: { value: mockLocationForm.City } });
     fireEvent.change(screen.getByPlaceholderText('AddLocationForm.description'), { target: { value: mockLocationForm.Description } });
-    fireEvent.click(screen.getByTestId('uploadPhoto'));
+    fireEvent.change(screen.getByText('AddLocationForm.uploadphoto'), { target: { value: mockLocationForm.Photos } });
 
 
     // Trigger form submission
@@ -62,7 +62,7 @@ describe('Uploading Component', () => {
       Lon: 'invalid',
       City: 'invalid',
       Description: 'invalid',
-      Photos: 'invalid',
+      Photos: [null],
 
     };
 
@@ -77,7 +77,7 @@ describe('Uploading Component', () => {
     fireEvent.change(screen.getByPlaceholderText('index.lon'), { target: { value: mockLocationForm.Lon } });
     fireEvent.change(screen.getByPlaceholderText('AddLocationForm.city'), { target: { value: mockLocationForm.City } });
     fireEvent.change(screen.getByPlaceholderText('AddLocationForm.description'), { target: { value: mockLocationForm.Description } });
-    //fireEvent.click(screen.getByText('AddLocationForm.uploadphoto'), { target: { value: mockLocationForm.Photos } });
+    //fireEvent.change(screen.getByText('AddLocationForm.photos'), { target: { value: mockLocationForm.Photos } });
     // Trigger form submission
     fireEvent.click(screen.getByText('AddLocationForm.submit'));
 

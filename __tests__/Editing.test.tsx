@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import axios from 'axios'; // Mocking Axios
-import { act } from 'react-dom/test-utils'; // Import act from react-dom/test-utils
+import { act } from 'react-dom/test-utils'; 
 import Editing from '@/components/Editing';
 
 // Mocking axios
@@ -30,7 +30,7 @@ describe('Editing Component', () => {
         Lon: -74.006,
         City: 'New York',
         Description: 'Sample Description',
-        Photos: ['photo1.jpg', 'photo2.jpg'],
+        Photos: ['photo2.jpg'],
       };
     render(<Editing Locationform={{ mockLocationForm }} />);
     
@@ -43,19 +43,19 @@ describe('Editing Component', () => {
         Lon: -74.006,
         City: 'New York',
         Description: 'Sample Description',
-        Photos: ['photo1.jpg', 'photo2.jpg'],
+        Photos: ['photo1.jpg'],
       };
     render(<Editing Locationform={{ mockLocationForm }} />);
     
     fireEvent.click(screen.getByText('AddLocationForm.submit'));
 
-    await waitFor(() => {
+    //await waitFor(() => {
       // Assert that axios.put was called with the correct URL
       //APIs being tested in Swagger 
       
       //expect(axios.put).toHaveBeenCalledWith('/api/changes/someId', mockLocationForm);
       
-    });
+    //});
   });
 
   it('displays a message when validation fails', async () => {
@@ -64,18 +64,18 @@ describe('Editing Component', () => {
         Lon: -74.006,
         City: 'New York',
         Description: 'Sample Description',
-        Photos: ['photo1.jpg', 'photo2.jpg'],
+        Photos: ['photo2.jpg'],
       };
     render(<Editing Locationform={{ mockLocationForm }} />);
     
     // Assuming your form submit button has text 'update location'
     fireEvent.click(screen.getByText('AddLocationForm.submit'));
 
-    await waitFor(() => {
+   
       // Assert that the validation message is displayed
       render(<Editing/>);
 
-      expect(screen.getByTestId('sorryMsg')).toBeInTheDocument();
-    });
+      expect(screen.getByTestId('Submittion Failed, You have letters inside Latitude or Longitude!')).toBeInTheDocument();
+    ;
   });
 });

@@ -12,12 +12,12 @@ const mockMapData = [
 
 const mockSession = {
   expires: new Date(Date.now() + 2 * 86400).toISOString(),
-  user: { username: 'admin' },
+  user: { username: 'username', role: 'admin'},
 };
 
 jest.mock('axios');
 
-describe('MyComponent', () => {
+describe('Index from Home', () => {
   it('should delete an item and update state', async () => {
     const mockId = 'someId';
 
@@ -46,5 +46,8 @@ describe('MyComponent', () => {
       //{ _id: '2' },
     //]);
   });
+
+
+
 })
 //})

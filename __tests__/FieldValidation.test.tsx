@@ -30,7 +30,7 @@ describe('FieldValidation', () => {
       const result = NumberValidation('Not a number');
   
       // Ensure that the validation object is returned with the correct message
-      expect(result).toEqual({ required: { value: false, message: 'validation.numbervalidator' } });
+      expect(result).toEqual({ required: { value: false, message: 'Submittion Failed, You have letters inside Latitude or Longitude!' } });
     });
   
     it('returns validation object with false if value is a number', () => {

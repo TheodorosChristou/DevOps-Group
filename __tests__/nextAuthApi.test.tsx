@@ -7,13 +7,10 @@ describe('Your API Route', () => {
       method: 'GET',
     });
 
-    // Call your API route handler
     await handler(req, res);
 
-    // Assert the response status code
     expect(res.statusCode).toBe(200);
 
-    // Parse the JSON response (assuming your API returns JSON)
     const jsonResponse = JSON.parse(res._getData());
 
     expect(jsonResponse).toHaveProperty("ObjectId('6563213f9b94e3bcc060a521')");

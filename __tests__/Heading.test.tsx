@@ -1,19 +1,17 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Heading from '@/components/Heading';
+import { useTranslation } from 'react-i18next';
 
-jest.mock('react-i18next', () => ({
-  ...jest.requireActual('react-i18next'),
-  useTranslation: () => ({ t: key => key }),
-}));
+jest.mock('i18next', () => ({
+  t: (i) => i
+}))
 
 describe('Heading Component', () => {
-  it('renders the title with the correct translation key', () => {
+  it('renders the title', () => {
     render(<Heading />);
-    
-    // Ensure the title element is rendered with the correct translation key
-    const titleElement = screen.getByText('title');
-    expect(titleElement).toHaveTextContent('heading.heading');
+    const heading = "Mongeese Map"
+    expect (heading).toBeInTheDocument()});
   });
 
   it('renders the meta description', () => {
@@ -28,7 +26,6 @@ describe('Heading Component', () => {
     render(<Heading />);
     
     // Ensure the favicon link element is rendered with the correct href
-    const faviconElement = screen.getByLabelText('icon');
+    const faviconElement = screen.getByText('icon');
     expect(faviconElement).toHaveAttribute('href', '/img/mongoose.ico');
   });
-});

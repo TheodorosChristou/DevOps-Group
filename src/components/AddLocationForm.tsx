@@ -96,6 +96,7 @@ export default function AddLocationForm(props){
         <form
         onSubmit={handleSubmit((data)=>{
             onSubmit({...data, ...{Photos: [icon]}})
+            console.log(data)
         })}>
 
 <div>

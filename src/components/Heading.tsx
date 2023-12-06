@@ -6,10 +6,10 @@ export default function Heading(){
     const {t,i18n} = useTranslation();
     return(
         
-        <div>
+        <div data-testid= "title">
         <Head>
-            <title data-testid= "title">{t('heading.heading')}</title>
-            <meta name="description" content="Home" />
+            <title >{'Mongeese Map'}</title>
+            <meta data-testid = "description" name="description" content="Home" />
             <link rel="icon" href="/img/mongoose.ico" />
         </Head>
       </div>
