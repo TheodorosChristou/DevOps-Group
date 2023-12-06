@@ -18,6 +18,8 @@ This test ensures that the map is visible on the web page.
 
 1. Visit the URL http://localhost:8080/map.
 2. Confirm the existence of the map item using the `data-test` attribute.
-```
+
+
+```javascript
 cy.get("[data-test='map-item']").should("exist");`
 ```
