@@ -1,32 +1,37 @@
 # DevOps-Group
 
-TEAM MEMBERS - Theodoros Christou, Arooj Fatima, Harriet Goodyear, Maye Hunt, Georgios Kleitou
+**TEAM MEMBERS** - Theodoros Christou, Arooj Fatima, Harriet Goodyear, Maye Hunt, Georgios Kleitou
 
-Technology
+**[Link to documentation index](Documentation/IndexDoc.md)**
 
-VSCode
-React
-Node
-Typescript
+### Technologies:
+- React
+- NextJS
+- Node
+- Typescript
 
-Code Testing
+### Code Testing:
+- Cypress
+- React
+- Github Workflow
+- Jest
 
--Notebook
--Cypress
--React Testing
+### Database:
+- Mongoose
+- Cloudinary
 
-Database
+### API:
+- Swagger
 
--Mongoose
+### Deployment:
+- Azure
+- Docker
 
-API
+### Monitoring:
+- Sentry
+- Google Analytics
 
--Swagger 
-
-Monitoring
-
-
-How to set up:
+**How to set up in a Local Environment:**
 
 - Clone the repo in your local file
 - Remove the .example from the file .env.local.example
