@@ -12,7 +12,7 @@ WELCOME TO DOCUMENTATION FOR DEV OPS
 - [INDEX PAGE](Web%20Pages/Index/Index%20Page.md)
 - [DATABASE](Web%20Pages/Index/database.md)
 - [HOME COMPONENT](Web%20Pages/Index/Home%20Component.md)
-- [MODEL SCHEMA](Web%20Pages/Index/Model%26Schema.md)
+- [MODEL SCHEMA](Web%20Pages/Index/Model%26Schema/Schema.md)
 - [MAP PAGE](Web%20Pages/MAP/Map%20Page.md)
 - [DYNAMIC MAP DOCUMENTATION](Web%20Pages/Map/Dynamic%20Map%20Documentation.md)
 - [LANGUAGE SELECTOR](Web%20Pages/Translation/LanguageSelector.md)
