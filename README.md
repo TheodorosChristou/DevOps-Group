@@ -4,30 +4,30 @@
 
 **Link to documentation index**(Documentation/IndexDoc.md)
 
-###Technologies:###
+### Technologies:
 - React
 - NextJS
 - Node
 - Typescript
 
-###Code Testing:###
+### Code Testing:
 - Cypress
 - React
 - Github Workflow
 - Jest
 
-###Database:###
+### Database:
 - Mongoose
 - Cloudinary
 
-###API:###
+### API:
 - Swagger
 
-###Deployment:###
+### Deployment:
 - Azure
 - Docker
 
-###Monitoring:###
+### Monitoring:
 - Sentry
 - Google Analytics
 
