@@ -4,7 +4,9 @@ import { GetServerSideProps } from "next";
 import dbConnect from "../../../../lib/dbConnect";
 import Map from "../../../../models/Map";
 
+
 export default function edit(Locationform){
+
 
 
   const DynamicEdit = dynamic(() => import("../../../components/Editing"), {

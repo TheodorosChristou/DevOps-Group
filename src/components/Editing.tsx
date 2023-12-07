@@ -4,11 +4,24 @@ import {useState} from "react";
 import axios from "axios";
 import {useMutation} from "react-query";
 import { useTranslation } from 'react-i18next';
+import FadeInDiv from '../components/FadeInDiv';
+import {useSession} from "next-auth/react"
+
 
 
 export default function Editing(Locationform){
 
     const values = Locationform.Locationform
+
+    const{data: session} = useSession();
+
+    var valid: boolean
+    
+    if(session?.user.role == "admin"){
+        valid = true
+    }else{
+        valid = false
+    }
 
     const {t} = useTranslation();
 
@@ -48,7 +61,8 @@ export default function Editing(Locationform){
           }
         );
 
-        return (
+        if(valid){
+          return (
 
          <div className="mt-10 text-white">
 <AddLocationForm
@@ -58,6 +72,11 @@ export default function Editing(Locationform){
          label="update location"/>
     <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white">{t("uploading.sorry")}</h1>)}</div></div> 
         )
+}else{
+  return <div className="flex items-center justify-center"><FadeInDiv><div className="container mx-auto my-8 p-8 bg-white shadow-md">
+  <h1 className="text-2xl font-bold mb-4">Unauthorized!</h1>
+  <p>This page cannot be accessed without logging in as an admin!.</p>
+</div></FadeInDiv></div>
 }
-
+}
 

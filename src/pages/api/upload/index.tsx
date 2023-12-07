@@ -1,9 +1,18 @@
 import Map from "../../../../models/Map";
 import dbConnect from "../../../../lib/dbConnect";
 import {wrapApiHandlerWithSentry} from '@sentry/nextjs'
+import {unstable_getServerSession} from "next-auth";
+import {authOptions} from "../auth/[...nextauth]";
+
 
 const handler = async(req,res) =>{
     const {method} = req;
+
+    const session = await unstable_getServerSession(req, res, authOptions);
+    if (!session) {
+      return res.status(404);
+    }
+
 
     await dbConnect();
 
