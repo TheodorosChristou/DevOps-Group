@@ -8,10 +8,6 @@
     {
       "url": "https://com619mongeese.uksouth.cloudapp.azure.com/",
       "description": "MongeeseMap"
-    },
-    {
-      "url": "http://localhost:8080",
-      "description": "Localhost"
     }
   ],
   "paths": {
@@ -37,6 +33,9 @@
           },
           "400": {
             "description": "Bad Request. Invalid input data."
+          },
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -107,6 +106,16 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
           }
         }
       },
@@ -144,7 +153,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/inline_response_400_1"
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bad Authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
                 }
               }
             }
@@ -203,8 +222,21 @@
             "description": "Description of the location"
           },
           "Photos": {
-            "type": "string",
-            "description": "Photos of the location"
+            "type": "array",
+            "description": "Photos of the location",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "inline_response_401": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the deletion was unsuccessful",
+            "example": false
           }
         }
       },
@@ -239,16 +271,6 @@
           "success": {
             "type": "boolean",
             "description": "Indicates whether the update was unsuccessful",
-            "example": false
-          }
-        }
-      },
-      "inline_response_400_1": {
-        "type": "object",
-        "properties": {
-          "success": {
-            "type": "boolean",
-            "description": "Indicates whether the deletion was unsuccessful",
             "example": false
           }
         }
