@@ -1,20 +1,20 @@
-// Import necessary dependencies for testing
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import DynamicMap from '@/components/DynamicMap';
-
+import useCloudinary from '@/hooks/useCloudinary';
+import { resolve } from 'path';
 // Mock the useTranslation hook
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({ t: jest.fn() }),
 }));
 
 // Mock the useCloudinary hook
-jest.mock('@/hooks/useCloudinary', () => ({
+jest.mock('useCloudinary'), () => ({
   __esModule: true,
   default: () => ({ Cloudinary: { image: jest.fn() } }),
-}));
+});
 
 const mockGeolocation = {
   getCurrentPosition: jest.fn(),

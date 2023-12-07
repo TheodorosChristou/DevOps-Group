@@ -101,7 +101,7 @@ export default function AddLocationForm(props){
 
 <div>
             <label className="font-semibold"> {t("index.lat")} </label>
-            <input
+            <input data-testid='LatTest'
             {...register("Lat", FieldValidation(valid))}
             className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="float"
@@ -111,7 +111,7 @@ export default function AddLocationForm(props){
             </div>
             <div>
             <label className="font-semibold"> {t("index.lon")} </label>
-            <input
+            <input data-testid='LonTest'
             {...register("Lon", FieldValidation(valid))}
             className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="float"
@@ -121,7 +121,7 @@ export default function AddLocationForm(props){
             </div>
             <div>
             <label className="font-semibold"> {t("AddLocationForm.city")} </label>
-            <input
+            <input data-testid='CityTest'
             {...register("City", FieldValidation(valid))}
             className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="string"
@@ -132,7 +132,7 @@ export default function AddLocationForm(props){
             </div>
             <div>
             <label className="font-semibold"> {t("AddLocationForm.description")} </label>
-            <input
+            <input data-testid='DescTest'
             {...register("Description", FieldValidation(valid))}
             className="border-2 rounded-md p-2 ml-2 text-black w-full"
             type="string"
@@ -148,13 +148,13 @@ export default function AddLocationForm(props){
               <>
             <div className="pt-5 flex justify-center">
               <TrashIcon className="w-5 h-5 cursor-pointer" onClick={() => setIcon(null)}/>
-              <AdvancedImage className="border-2 border-black mr-1" cldImg={Cloudinary.image(icon).resize(thumbnail().width(200).height(200))}/> 
+              <AdvancedImage data-testid="returnValue"className="border-2 border-black mr-1" cldImg={Cloudinary.image(icon).resize(thumbnail().width(200).height(200))}/> 
             </div>
             </>
             ))}
             <div className=" flex justify-center">
                 <div className="flex justify-center mt-5 bg-black text-white rounded-full w-full">
-                <button className="bg-black text-white bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("AddLocationForm.submit")}</button>
+                <button data-testid="submitButton"className="bg-black text-white bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("AddLocationForm.submit")}</button>
                 </div>
             </div>
         </form>

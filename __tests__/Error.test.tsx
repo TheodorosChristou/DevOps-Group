@@ -18,4 +18,3 @@ it('Should have a heading', () => {
     const heading = screen.getByTestId('heading');
     expect(heading).toHaveClass('flex-col')
 })
-

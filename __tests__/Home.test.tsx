@@ -17,37 +17,53 @@ const mockSession = {
 
 jest.mock('axios');
 
-describe('Index from Home', () => {
-  it('should delete an item and update state', async () => {
-    const mockId = 'someId';
+describe('Index component', () => {
+  it('displays admin messages for admin users', () => {
+    const mockMap = {
+      Map: [
+        { _id: 1, Lat: 12.34, Lon: 56.78, City: 'City 1', Description: 'Description 1' },
+      ],
+    };
 
-    // Mock axios.delete to resolve with a success response
-    (axios.delete as jest.Mock).mockResolvedValueOnce({} as never);
+    const mockSessionAdmin = {
+      user: {
+        name: 'AdminUser',
+        role: 'admin',
+      },
+    };
 
-    // Mock initial mapState and setMapState function
-    const initialMapState = [{ _id: '1' }, { _id: '2' }, { _id: mockId }];
-    const setMapStateMock = jest.fn();
+    render(<Index Map={mockMap} sess={mockSessionAdmin} />);
 
-    // Render your component with the mock data and functions
-    render(<Index Map={mockMapData} sess={mockSession} />);
+    expect(screen.getByText('Welcome Admin')).toBeInTheDocument();
 
-    // Trigger the handleDelete function
-    userEvent.click(screen.getByTestId('deleteButton'));
+    const deleteButtons = screen.getAllByTestId('deleteButton');
+    expect(deleteButtons).toHaveLength(mockMap.Map.length);
+  });
 
-    // Wait for the asynchronous operation to complete
-    //await waitFor(() => {
-    //   // Assert that axios.delete was called with the correct URL
-      //expect(axios.delete).toHaveBeenCalledWith(`/api/changes/${mockId}`);
-    // });
+  it('displays user messages for user users', () => {
+    const mockSessionUser = {
+      user: {
+        name: 'RegularUser',
+        role: 'user',
+      },
+    };
 
-    // Assert that setMapState was called with the updated state (item removed)
-    //expect(setMapStateMock).toHaveBeenCalledWith([
-      //{ _id: '1' },
-      //{ _id: '2' },
-    //]);
+    render(<Index Map={{ Map: [] }} sess={mockSessionUser} />);
+
+    expect(screen.getByText('Now that you have logged in, you can use the upload function of our website so share your favorite places around the world!')).toBeInTheDocument();
+
+    expect(screen.getByText('Simply go to the map and give permission to share your location, our website then will show you the latitude and longitude.')).toBeInTheDocument();
+    expect(screen.getByText('Once you copy them, you can click the Upload button and paste them there along with any information and a great picture you can share!!')).toBeInTheDocument();
+  });
+
+  it('displays a message for non-logged-in users', () => {
+    render(<Index Map={{ Map: [] }} sess={null} />);
+
+    expect(screen.getByText('Please Log in using the Header')).toBeInTheDocument();
   });
 
 
 
-})
-//})
+
+});
+

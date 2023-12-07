@@ -4,6 +4,10 @@ import '@testing-library/jest-dom';
 import axios from 'axios'; // Mocking Axios
 import { act } from 'react-dom/test-utils'; 
 import Editing from '@/components/Editing';
+import { _id } from '@next-auth/mongodb-adapter';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+
 
 // Mocking axios
 jest.mock('axios');
@@ -39,6 +43,7 @@ describe('Editing Component', () => {
 
   it('calls the update location function on form submission', async () => {
     const mockLocationForm = {
+       _id: "65707e94e7777c3e9b149366",
         Lat: 40.7128,
         Lon: -74.006,
         City: 'New York',
@@ -49,33 +54,41 @@ describe('Editing Component', () => {
     
     fireEvent.click(screen.getByText('AddLocationForm.submit'));
 
-    //await waitFor(() => {
+    await waitFor(() => {
       // Assert that axios.put was called with the correct URL
       //APIs being tested in Swagger 
       
-      //expect(axios.put).toHaveBeenCalledWith('/api/changes/someId', mockLocationForm);
+      expect(axios.put).toHaveBeenCalledWith('/api/changes/65707e94e7777c3e9b149366',{"_id": "65707e94e7777c3e9b149366","City": "New York", "Description": "1", "Lat": "40.7128", "Lon": "-74.006", "Photos": ["photo1.jpg"]});
       
-    //});
+    });
   });
 
-  it('displays a message when validation fails', async () => {
+  it('should display sorry message on failed validation', async () => {
     const mockLocationForm = {
-        Lat: 40.7128,
-        Lon: -74.006,
-        City: 'New York',
-        Description: 'Sample Description',
-        Photos: ['photo2.jpg'],
-      };
-    render(<Editing Locationform={{ mockLocationForm }} />);
-    
-    // Assuming your form submit button has text 'update location'
+      Lat: 'invalid',
+      Lon: 'invalid',
+      City: 'invalid',
+      Description: 'invalid',
+      Photos: [null],
+
+    };
+
+    render(
+          <Editing />      );
+
+    // Fill in the form with invalid values
+    fireEvent.change(screen.getByTestId('LatTest'), { target: { value: mockLocationForm.Lat } });
+    fireEvent.change(screen.getByTestId('LonTest'), { target: { value: mockLocationForm.Lon } });
+    fireEvent.change(screen.getByTestId('CityTest'), { target: { value: mockLocationForm.City } });
+    fireEvent.change(screen.getByTestId('DescTest'), { target: { value: mockLocationForm.Description } });
+    //fireEvent.change(screen.getByTestId('uploadPhoto'), { target: { value: mockLocationForm.Photos } });
+    // Trigger form submission
     fireEvent.click(screen.getByText('AddLocationForm.submit'));
 
-   
-      // Assert that the validation message is displayed
-      render(<Editing/>);
-
-      expect(screen.getByTestId('Submittion Failed, You have letters inside Latitude or Longitude!')).toBeInTheDocument();
-    ;
+    // Wait for the sorry message to be displayed
+    await waitFor(() => {
+      // Assert that the sorry message is displayed
+      expect(screen.getByTestId('sorryMsg')).toBeInTheDocument();
+    });
   });
 });

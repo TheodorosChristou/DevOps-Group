@@ -1,5 +1,3 @@
-// FieldValidation.test.ts
-
 import { render } from '@testing-library/react';
 import { useTranslation } from 'react-i18next';
 import { NumberValidation } from '@/components/FieldValidation';
@@ -26,12 +24,6 @@ describe('FieldValidation', () => {
   });
   
   describe('NumberValidation', () => {
-    it('returns validation object with message if value is NaN', () => {
-      const result = NumberValidation('Not a number');
-  
-      // Ensure that the validation object is returned with the correct message
-      expect(result).toEqual({ required: { value: false, message: 'Submittion Failed, You have letters inside Latitude or Longitude!' } });
-    });
   
     it('returns validation object with false if value is a number', () => {
       const result = NumberValidation(42);

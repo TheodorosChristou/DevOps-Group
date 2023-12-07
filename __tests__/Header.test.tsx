@@ -48,7 +48,6 @@ it('Should have a heading', () => {
     expect(heading).toBeInTheDocument()
     })
 
-
 it('Should Show Menu when has session',
     async () => {
     const {container} = render(<Header/>);
@@ -56,6 +55,3 @@ it('Should Show Menu when has session',
     expect(container).toMatchSnapshot()
     expect(screen.getByText("Menu")).toBeInTheDocument();
     })
-
-
-  
