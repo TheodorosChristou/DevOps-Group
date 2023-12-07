@@ -6,9 +6,7 @@ import {authOptions} from "../auth/[...nextauth]";
 
 export default async function handler(req,res){
 
-    const {query: {id}, method} = req;
-
-    const session = await unstable_getServerSession(req, res, authOptions) || null;
+    const {query: {id,session}, method} = req;
 
     console.log(session)
 

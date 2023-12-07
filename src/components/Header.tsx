@@ -67,6 +67,14 @@ export default function Header() {
             <div className="mx-2.5 gap-1 hidden lg:flex">
               <a
                 className="text-xl hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 rounded-full"
+                href="/GDPR"
+              >
+                GDPR
+              </a>
+            </div>
+            <div className="mx-2.5 gap-1 hidden lg:flex">
+              <a
+                className="text-xl hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 rounded-full"
                 href="/api-docs"
               >
                 Swagger Docs
@@ -164,6 +172,14 @@ export default function Header() {
                       tabIndex={-1}
                     >
                       {t("header.map")}
+                    </a>
+                    <a
+                      href="/GDPR"
+                      className="text-gray-700 block px-4 py-2 text-sm"
+                      role="menuitem"
+                      tabIndex={-1}
+                    >
+                      {t("header.GDPR")}
                     </a>
                     {session && (
                       <a
