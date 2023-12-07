@@ -63,7 +63,7 @@ export default function Index({ Map, sess }) {
                     <span className="block sm:inline">{t("AddLocationForm.description")}: {r.Description}</span>
                     </td>
                     <td key={i+15} className="flex justify-center"><button onClick={() => handleDelete(r._id)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.delete")}</button></td>
-                    <td key={i+20}className="flex justify-center"><button onClick={() => redirect(`/route/${r._id,session}/edit/`)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.update")}</button></td>
+                    <td key={i+20}className="flex justify-center"><button onClick={() => redirect(`/route/${r._id}/edit/`)} className="bg-sky-400 bg rounded-full py-1 px-1 xs:px-3 sm:px-3 font-semibold">{t("index.update")}</button></td>
                   </tr>
                 </tbody>
               </table>
