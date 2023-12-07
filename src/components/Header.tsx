@@ -64,14 +64,6 @@ export default function Header() {
                 {t("header.map")}
               </a>
             </div>
-            <div className="mx-2.5 gap-1 hidden lg:flex">
-              <a
-                className="text-xl hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 rounded-full"
-                href="/legal"
-              >
-                {t("header.legal")}
-              </a>
-            </div>
 
             {session ? (
               <>
@@ -164,22 +156,6 @@ export default function Header() {
                       tabIndex={-1}
                     >
                       {t("header.map")}
-                    </a>
-                    <a
-                      href="/legal"
-                      className="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabIndex={-1}
-                    >
-                      {t("header.legal")}
-                    </a>
-                    <a
-                      href="/documentation"
-                      className="text-gray-700 block px-4 py-2 text-sm"
-                      role="menuitem"
-                      tabIndex={-1}
-                    >
-                      {t("header.documentation")}
                     </a>
                     {session && (
                       <a
