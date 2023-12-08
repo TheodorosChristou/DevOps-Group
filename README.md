@@ -9,6 +9,8 @@
 - NextJS
 - Node
 - Typescript
+- Leaflet
+- i18n
 
 ### Code Testing:
 - Cypress
@@ -19,8 +21,10 @@
 ### Database:
 - Mongoose
 - Cloudinary
+- Axios
+- NextAuth
 
-### API:
+### API Doc:
 - Swagger
 
 ### Deployment:
