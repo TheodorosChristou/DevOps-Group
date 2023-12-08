@@ -79,16 +79,16 @@ export default function Index({ Map, sess }) {
             {t("index.welcomeMsg")}
           </h1>
           <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={2}>
-            Now that you have logged in, here is what you can expect from each page of this website!
+          {t("index.msg1")}
           </h1>
           <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={3}>
-           The Home Page is simply a way for you to read up and get accustumed to the website! It will offer documentation and the general usage.
+          {t("index.msg2")}
           </h1>
           <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={4}>
-            The Map page is your way of looking up all the locations that were posted around the world, and should you accept you share your location, the map will center on you and show you the Lat and Lon so you can copy them and upload your own location!
+          {t("index.msg3")}
           </h1>
           <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={4}>
-            The Upload page is where you can upload a location yourself! With the Lat and Lon you got from the map or searched online, you can write the city name, a description, and give us a nice picture from your phone or browser, and all you have to do is click sumbit! This will send the location to our database, and allow the map to read it so other users can have a look at what you posted!
+          {t("index.msg4")}
           </h1>
         </div>
       )}

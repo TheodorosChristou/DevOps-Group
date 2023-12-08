@@ -69,7 +69,7 @@ export default function Header() {
                 className="text-xl hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 rounded-full"
                 href="/GDPR"
               >
-                GDPR
+                {t("header.GDPR")}
               </a>
             </div>
             <div className="mx-2.5 gap-1 hidden lg:flex">
