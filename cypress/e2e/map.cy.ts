@@ -5,7 +5,7 @@ describe("Map Test", () => {
 
     it("checks the map is shown", () => {
 
-        cy.get("[data-test='map-item']").should("exist");
+        cy.get(".leaflet-container").should("exist");
     });
 
     

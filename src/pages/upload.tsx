@@ -14,6 +14,7 @@ import {useMutation} from "react-query";
     const redirect = (url, asLink = true) =>
     asLink ? (window.location.href = url) : window.location.replace(url);
 
+<<<<<<< Updated upstream
   
     const {isLoading, isSuccess, isError, mutate} = useMutation( async(locationform: FormValues) =>{
           console.log("creating new marker")
@@ -29,3 +30,19 @@ import {useMutation} from "react-query";
   onSubmit={(locationform) => mutate(locationform)}
   /></div>;
   }
+=======
+    const{data: session} = useSession();
+    var valid: boolean
+    
+    if(session || process.env.NEXT_PUBLIC_TESTING){
+        valid = true
+    }else{
+        valid = false
+    }
+
+    const Uploader = dynamic(() => import('../components/Uploading'), { ssr:false} )
+
+    return(<Uploader session={valid}/>)
+
+  }
+>>>>>>> Stashed changes

@@ -19,8 +19,19 @@ export default function DynamicMap({ mapData }) {
     <div className="fixed inset-0 flex items-center justify-center">
       <div className="w-screen h-screen" data-test='map-item'>
         {/* Map Rendering */}
+<<<<<<< Updated upstream
         <MapContainer style={{ width: '100%', height: '100%' }} center={[32.5072, 12.1276]} zoom={10} scrollWheelZoom={true}>
           <TileLayer 
+=======
+        <MapContainer
+          style={{ width: '100%', height: '100%' }}
+          center={userLocation || [51.5072, 0.1276]}
+          zoom={16}
+          scrollWheelZoom={true}
+          
+        >
+          <TileLayer
+>>>>>>> Stashed changes
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
