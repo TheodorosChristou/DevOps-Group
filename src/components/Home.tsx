@@ -30,7 +30,7 @@ export default function Index({ Map, sess }) {
   asLink ? (window.location.href = url) : window.location.replace(url);
 
   return (
-    <div className="mt-10 mb-10">
+    <div data-testid='deleteButton'className="mt-10 mb-10">
       {session && session.user.role === "admin" && (
         <div className="bg-black">
           <h1 className="font-semibold text-xl text-md text-white mt-8 underline underline-offset-8 flex justify-center" key={0}>
