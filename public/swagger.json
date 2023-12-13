@@ -1,0 +1,280 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "NextJS Swagger Mongeese Map",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://com619mongeese.uksouth.cloudapp.azure.com/",
+      "description": "MongeeseMap"
+    }
+  ],
+  "paths": {
+    "/api/upload/": {
+      "post": {
+        "tags": [
+          "Create Location"
+        ],
+        "summary": "Upload location information",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/api_upload_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Location uploaded successfully"
+          },
+          "400": {
+            "description": "Bad Request. Invalid input data."
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "Reading Database"
+        ],
+        "summary": "Check if Index reads Database",
+        "description": "Shows if the database entries are up and running",
+        "responses": {
+          "200": {
+            "description": "Database is up"
+          },
+          "500": {
+            "description": "Server Errror, database or server down"
+          }
+        }
+      }
+    },
+    "/api/changes/{id}": {
+      "put": {
+        "tags": [
+          "Update Location"
+        ],
+        "summary": "Update a location by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the location to update",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/changes_id_body"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Location updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Unable to update the location.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_400"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Delete Location"
+        ],
+        "summary": "Delete a location by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the location to delete",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Location deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200_1"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request. Unable to delete the location.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Bad Authentication",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_401"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the deletion was successful",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "description": "Deleted location data"
+          }
+        }
+      },
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the update was successful",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "description": "Updated location data"
+          }
+        }
+      },
+      "api_upload_body": {
+        "type": "object",
+        "properties": {
+          "Lat": {
+            "type": "number",
+            "description": "Latitude of the location"
+          },
+          "Lon": {
+            "type": "number",
+            "description": "Longitude of the location"
+          },
+          "City": {
+            "type": "string",
+            "description": "City of the location"
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the location"
+          },
+          "Photos": {
+            "type": "array",
+            "description": "Photos of the location",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "inline_response_401": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the deletion was unsuccessful",
+            "example": false
+          }
+        }
+      },
+      "changes_id_body": {
+        "type": "object",
+        "properties": {
+          "Lat": {
+            "type": "number",
+            "description": "Latitude of the location"
+          },
+          "Lon": {
+            "type": "number",
+            "description": "Longitude of the location"
+          },
+          "City": {
+            "type": "string",
+            "description": "City of the location"
+          },
+          "Description": {
+            "type": "string",
+            "description": "Description of the location"
+          },
+          "Photos": {
+            "type": "string",
+            "description": "Photos of the location"
+          }
+        }
+      },
+      "inline_response_400": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean",
+            "description": "Indicates whether the update was unsuccessful",
+            "example": false
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@ import axios from "axios";
 import "../i18n";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react"
+
 export default function Index({ Map, sess }) {
   const { t } = useTranslation();
   const map = Map;
@@ -78,13 +79,16 @@ export default function Index({ Map, sess }) {
             {t("index.welcomeMsg")}
           </h1>
           <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={2}>
-            {t("index.msg1")}
+          {t("index.msg1")}
           </h1>
           <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={3}>
-            {t("index.msg2")}
+          {t("index.msg2")}
           </h1>
           <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={4}>
-            {t("index.msg3")}
+          {t("index.msg3")}
+          </h1>
+          <h1 className="font-semibold text-xl text-white mt-8 flex justify-center" key={4}>
+          {t("index.msg4")}
           </h1>
         </div>
       )}

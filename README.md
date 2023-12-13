@@ -1,39 +1,39 @@
 # DevOps-Group
 
-TEAM MEMBERS - Theodoros Christou, Arooj Fatima, Harriet Goodyear, Maye Hunt, Georgios Kleitou
+**TEAM MEMBERS** - Theodoros Christou, Arooj Fatima, Harriet Goodyear, Maye Hunt, Georgios Kleitou
 
-Technology
+**[Link to documentation index](Documentation/IndexDoc.md)**
 
-VSCode
-React
-Node
-Typescript
+### Technologies:
+- React
+- NextJS
+- Node
+- Typescript
 
-Code Formatting
+### Code Testing:
+- Cypress
+- React
+- Github Workflow
+- Jest
 
--Prettier/Lint
--Husky
+### Database:
+- Mongoose
+- Cloudinary
 
-Code Testing
+### API:
+- Swagger
 
--Notebook
--Cypress
--React Testing
+### Deployment:
+- Azure
+- Docker
 
-Database
+### Monitoring:
+- Sentry
+- Google Analytics
 
--Mongoose
+**How to set up in a Local Environment:**
 
-API
-
--Swagger 
-
-Monitoring
-
-
-How to set up:
-
-- Clone this specific branch and open it in VSCode with this code in your command prompt `git clone --branch Theo https://github.com/GoodH21/DevOps-Group`
+- Clone the repo in your local file
 - Remove the .example from the file .env.local.example
 - Install the dependencies with `npm install` in the terminal
 - Run the code with `npm run dev`
