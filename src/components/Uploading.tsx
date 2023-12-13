@@ -3,15 +3,16 @@ import AddLocationForm, {FormValues} from "../components/AddLocationForm"
 import axios from "axios";
 import {useMutation} from "react-query";
 import { useTranslation } from 'react-i18next';
+import {useSession} from "next-auth/react"
+import FadeInDiv from '../components/FadeInDiv';
 
 
 
+export default function Uploading(session){
 
-
-export default function Uploading(){
+    const valid = session.session
 
     const {t} = useTranslation();
-
     const redirect = (url, asLink = true) =>
     asLink ? (window.location.href = url) : window.location.replace(url);
 
@@ -38,12 +39,22 @@ export default function Uploading(){
         }
 
       });
+
+      if(valid){
+        return <div><div className="text-white mt-5"><AddLocationForm
+        isLoading={isLoading}
+      onSubmit={(locationform) => mutate(locationform)}
+      />  </div> <div className="text-white mt-5 flex justify-center">{!validation && (<h1 className="text-white">{t("uploading.sorry")}</h1>)}</div></div>;
+      }else{
+        return <div className="flex items-center justify-center"><FadeInDiv><div className="container mx-auto my-8 p-8 bg-white shadow-md">
+        <h1 className="text-2xl font-bold mb-4">Unauthorized!</h1>
+        <p>This page cannot be accessed without logging in!.</p>
+      </div></FadeInDiv></div>
+
+      }
     
   
   
-      return <div><div className="text-white mt-5"><AddLocationForm
-      isLoading={isLoading}
-    onSubmit={(locationform) => mutate(locationform)}
-    />  </div> <div className="text-white mt-5 flex justify-center">{!validation && (<h1 data-testid='sorryMsg'className="text-white">{t("uploading.sorry")}</h1>)}</div></div>;
+
 
 }
