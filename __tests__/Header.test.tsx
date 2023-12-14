@@ -34,7 +34,7 @@ it('Should have a heading', () => {
     expect(heading).toBeInTheDocument()
 })
 
- it('Should Show Log Out when has session',
+it('Should Show Log Out when has session',
     async () => {
     const {container} = render(<Header/>);
   
@@ -42,11 +42,8 @@ it('Should have a heading', () => {
     expect(screen.getByText("Logout")).toBeInTheDocument();
     })
 
-it('Should have a heading', () => {
-    render (<Header />);
-    const heading = screen.getByText('Menu')
-    expect(heading).toBeInTheDocument()
-    })
+
+
 
 it('Should Show Menu when has session',
     async () => {
@@ -55,3 +52,11 @@ it('Should Show Menu when has session',
     expect(container).toMatchSnapshot()
     expect(screen.getByText("Menu")).toBeInTheDocument();
     })
+
+it('Should have a heading', () => {
+    render (<Header />);
+    const heading = screen.getByText('Menu')
+    expect(heading).toBeInTheDocument()
+    })
+
+
