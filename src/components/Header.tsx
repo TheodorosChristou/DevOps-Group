@@ -21,7 +21,7 @@ export default function Header() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-40 bg-gray-100">
-      <nav className="p-2 items-center w-full flex justify-between">
+      <nav data-testid='navbar' className="p-2 items-center w-full flex justify-between">
         <div className="text-black h-12 w-full gap-0 sm:gap-3 flex items-center justify-between">
           <div className="flex align-center">
             <div className="flex space-x-5  ">
@@ -69,7 +69,7 @@ export default function Header() {
                 className="text-xl hover:bg-gray-300 py-1 px-1 xs:px-3 sm:px-3 rounded-full"
                 href="/GDPR"
               >
-                GDPR
+                {t("header.GDPR")}
               </a>
             </div>
             <div className="mx-2.5 gap-1 hidden lg:flex">

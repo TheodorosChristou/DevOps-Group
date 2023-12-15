@@ -52,9 +52,5 @@ export default function Uploading(session){
       </div></FadeInDiv></div>
 
       }
-    
-  
-  
-
 
 }
