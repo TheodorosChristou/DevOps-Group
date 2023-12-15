@@ -1,5 +1,4 @@
 # DevOps-Group
- (),  (),  (),  (),  ()
 
 **[Link to documentation index](Documentation/IndexDoc.md)**
 **[Link to youtube video](https://www.youtube.com/watch?v=PHdAnj55yQg)**
@@ -48,35 +47,10 @@
 
 **TEAM MEMBERS**
 
-<table>
-  <thead>
-    <tr>
-      <th>Names</th>
-      <th>Github Names</th>
-      <th>Emails/th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td> Theodoros Christou</td>
-      <td>Arooj Fatima</td>
-      <td>Harriet Goodyear</td>
-      <td>Maye Hunt</td>
-      <td>Georgios Kleitou</td>
-    </tr>
-    <tr>
-      <td>TheodorosChristou</td>
-      <td>Aroooj</td>
-      <td>GoodH21</td>
-      <td>MayeHunt</td>
-      <td>GeorgiosKleitou</td>
-    </tr>
-    <tr>
-      <td>5chrit06@solent.ac.uk</td>
-      <td>5fatia92@solent.ac.uk</td>
-      <td>5goodh71@solent.ac.uk</td>
-      <td>1huntg03@solent.ac.uk</td>
-      <td>5kleig36@solent.ac.uk</td>
-    </tr>
-  </tbody>
-</table>
+| Names                | Github Names    | Emails                    |
+|----------------------|-----------------|---------------------------|
+| Theodoros Christou   | TheodorosChristou| 5chrit06@solent.ac.uk    |
+| Arooj Fatima         | Aroooj           | 5fatia92@solent.ac.uk    |
+| Harriet Goodyear     | GoodH21          | 5goodh71@solent.ac.uk    |
+| Maye Hunt            | MayeHunt         | 1huntg03@solent.ac.uk    |
+| Georgios Kleitou     | GeorgiosKleitou  | 5kleig36@solent.ac.uk    |
